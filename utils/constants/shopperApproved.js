@@ -1,0 +1,18 @@
+export const saDateFormat = 'F j, Y';
+export const productReviewsCount = 3;
+export const reviewsCount = 20;
+export const saHost = '//www.shopperapproved.com';
+export const qaHost = '//printglobe.services.answerbase.com';
+export const categoryReviewSrc = `https:${saHost}/widgets/group2.0/`;
+const saWidgets = saSite => `https:${saHost}/widgets/${saSite}/merchant`;
+export const reviewPageWidget = saSite => `${saWidgets(saSite)}/review-page/490MR82qjK6G.js`;
+export const rotatingWidget = saSite => `${saWidgets(saSite)}/rotating-widget/ede7TZF614PY.js?v=5`;
+export const qaWidgetSrc = `https:${qaHost}/javascript/widget/full-featured-widget.min.js`;
+export const callToActionSrc = `https:${qaHost}/javascript/widget/cta-widget.min.js`;
+export const guardBannerSrc = 'https://tgscript.s3.amazonaws.com/tgscript-v1.037.js';
+export const guardImgUrl = 'https://seal.trustguard.com/sites/printglobe.com/';
+export const floatingGuardImg = `${guardImgUrl}63614c65501ac506d685153e.svg`;
+export const cartGuardImg = `${guardImgUrl}63614c80501ac506d6851540.svg`;
+export const guardBannerIntegrity = 'sha384-dee0g4yu71l53hLYrFFhPrKQmKqWPZxF17jOPimVbD86TJ+Mt4vpNAPERv5dElFb';
+export const guardBannerAnimationId = '6356f411eaa82406a514eb82';
+export const answerBaseConversionTrackerSrc = 'https://printglobe.services.answerbase.com/javascript/widget/conversion-tracking.min.js';

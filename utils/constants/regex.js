@@ -1,0 +1,11 @@
+import {httpProtocol, httpsProtocol} from './common';
+export const adminPhoneRegex = /((1)(-| |))?(\([0-9]{3}\)(-| )|[0-9]{3}(-| ))[0-9]{3}(-| )[0-9]{4}/gm;
+export const printGlobeMatchingRegex = /printglobe/gi;
+export const clearNameRegex = /[^\s\w]/g;
+export const quoteRegex = /"/g;
+export const scriptTagAttrsRegexp = /^(id|type|src|async|defer|innerHTML|onload|integrity|crossOrigin)$/;
+export const scriptTagDataAttrRegexp = /^data-/;
+export const endsWithSlashRegexp = /\/$/;
+export const anyHttpRegexp = new RegExp(`^(${httpsProtocol}|${httpProtocol}):`);
+export const newLineRegexp = /\r?\n|\r/g;
+export const newFolderNameRegexp = /[\/.]/g;
