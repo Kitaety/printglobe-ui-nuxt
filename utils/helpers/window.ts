@@ -1,5 +1,3 @@
-import {isNumber} from 'lodash';
-
 export function getWindowInnerWidth() {
     return typeof window !== 'undefined' ? window.innerWidth : 0;
 }

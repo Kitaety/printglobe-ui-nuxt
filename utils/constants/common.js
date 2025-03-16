@@ -1,5 +1,3 @@
-import {values} from 'lodash';
-
 export const defaultScriptType = 'text/javascript';
 export const applicationLdJsonType = 'application/ld+json';
 export const stylesheetType = 'stylesheet';
@@ -124,7 +122,7 @@ export const orderExternalStatusLabels = {
     cancelled: 'Cancelled'
 };
 
-export const orderExternalStatusList = values(orderExternalStatuses).map(status => ({
+export const orderExternalStatusList = useValues(orderExternalStatuses).map(status => ({
     value: status,
     label: orderExternalStatusLabels[status]
 }));
