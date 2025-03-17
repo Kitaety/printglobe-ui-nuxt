@@ -1,7 +1,13 @@
 <template>
     {{ state.searchTerm }}
-    <div ref="wrapper" class="search-wrapper">
-        <form :class="classNames('header-search', {icon: !showText})" @submit="onSubmit">
+    <div
+        ref="wrapper"
+        class="search-wrapper"
+    >
+        <form
+            :class="classNames('header-search', {icon: !showText})"
+            @submit="onSubmit"
+        >
             <label>
                 <span class="offleft"> Start typing, then use the up and down arrows to select an option from the list</span>
                 <input
@@ -13,12 +19,31 @@
                     @input="onSearchTermChanged"
                 />
             </label>
-            <span role="status" aria-live="polite" class="offleft" tabIndex="-1">
+            <span
+                role="status"
+                aria-live="polite"
+                class="offleft"
+                tabIndex="-1"
+            >
                 {{ countMatchObjects ? `${countMatchObjects} matches found` : '' }}
             </span>
-            <button v-if="!!showText" type="submit" class="header-search-button">Search</button>
-            <button v-else type="submit" class="header-search-button icon">
-                <img class="search-button-img" src="/images/searchIcon.svg" alt="search" />
+            <button
+                v-if="!!showText"
+                type="submit"
+                class="header-search-button"
+            >
+                Search
+            </button>
+            <button
+                v-else
+                type="submit"
+                class="header-search-button icon"
+            >
+                <img
+                    class="search-button-img"
+                    src="/images/searchIcon.svg"
+                    alt="search"
+                />
             </button>
         </form>
         <StoreSearchBarAutoComplete
@@ -65,7 +90,7 @@ const state = useState<{
 }));
 
 const countMatchObjects = computed(() => state.value.autocomplete.products.length + state.value.autocomplete.sub_categories.length);
-const wrapper = useTemplateRef('wrapper');
+const wrapper = useTemplateRef<HTMLDivElement>('wrapper');
 const searchStore = useSearchStore();
 const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (!(wrapper as Readonly<ShallowRef<HTMLDivElement | null>>) && !(wrapper.value as HTMLDivElement).contains(event.target as Node)) {

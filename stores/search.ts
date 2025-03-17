@@ -20,6 +20,7 @@ export const useSearchStore = defineStore('search', {
         clearSearch() {
             this.$patch({...initState});
         },
+		//TODO create special types for products, aggregations, aggregations
         setSearchResults(products: [], total: number, aggregations: [], params: Record<string, string>) {
             this.$patch({
                 products,

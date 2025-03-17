@@ -15,8 +15,8 @@ const showMobileSearchBar = useState(() => false);
 const authCookie = useCookie(config.authCookieName);
 profileStore.setIsLogin(!!authCookie.value);
 
-await profileStore.loadContactInfo();
-await wlConfigStore.loadtWlPartnerInfo();
+await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo()]);
+
 const isPartner = wlConfigStore.isPartner;
 
 // const { origin_url } = wlConfigStore;
@@ -42,7 +42,10 @@ const communicateWithClient = wlConfigStore.communication_approach === Communica
                 :src="`https://www.facebook.com/tr?id=${config.fbPixelId}&ev=PageView&noscript=1`"
                 alt=" facebook"
             />
-            <div id="storefront" :class="classNames('storefront', {'no-scroll': showMobileSearchBar})">
+            <div
+                id="storefront"
+                :class="classNames('storefront', {'no-scroll': showMobileSearchBar})"
+            >
                 <div class="site-content">
                     <StoreHeader />
                     <div :class="classNames('site-body', {'partner-no-chat': isPartner && !communicateWithClient})">

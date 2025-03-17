@@ -1,0 +1,14 @@
+{
+	"[html]": {
+	  "editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[json]": {
+	  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+	  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[vue]": {
+	  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+  }

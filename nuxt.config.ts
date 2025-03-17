@@ -27,6 +27,21 @@ export default defineNuxtConfig({
         }
     },
     css: ['./assets/scss/main.scss'],
+    googleFonts: {
+        display: 'swap',
+        families: {
+            'Open Sans': {
+                ital: [300, 400, 500, 600, 700, 800],
+                normal: [300, 400, 500, 600, 700, 800]
+            },
+            'Bebas Neue': {
+                ital: [300, 400, 500, 600, 700, 800],
+                normal: [300, 400, 500, 600, 700, 800]
+            }
+        },
+        preconnect: true,
+        useStylesheet: true
+    },
     runtimeConfig: {
         app: {
             apiRoot: process.env.NUXT_API_ROOT

@@ -4,7 +4,15 @@ import {contentAnchorLink} from '~/utils/constants/skipToContent';
 
 <template>
     <div>
-        <input type="hidden" autoFocus />
-        <a className="skip-to-content-link" :href="contentAnchorLink"> Skip to content </a>
+        <input
+            type="hidden"
+            autoFocus
+        />
+        <a
+            className="skip-to-content-link"
+            :href="contentAnchorLink"
+        >
+            Skip to content
+        </a>
     </div>
 </template>

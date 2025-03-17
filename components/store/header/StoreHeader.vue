@@ -20,16 +20,37 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
     <header :class="classNames('public-header', {open: pageStore.shopByCategory.isOpen})">
         <StoreSkipToContentLink />
         <div>
-            <div v-if="!!pageStore.documents.headerSlogan" className="header-slogan" v-html="pageStore.documents.headerSlogan" />
+            <div
+                v-if="!!pageStore.documents.headerSlogan"
+                className="header-slogan"
+                v-html="pageStore.documents.headerSlogan"
+            />
             <div class="primary-header">
                 <div class="container">
-                    <div v-if="isPartner" itemscope itemtype="https://schema.org/WebSite">
-                        <link itemprop="url" :href="printglobeUrl" />
-                        <meta itemprop="name" :content="defaultBusinessName" />
+                    <div
+                        v-if="isPartner"
+                        itemscope
+                        itemtype="https://schema.org/WebSite"
+                    >
+                        <link
+                            itemprop="url"
+                            :href="printglobeUrl"
+                        />
+                        <meta
+                            itemprop="name"
+                            :content="defaultBusinessName"
+                        />
                     </div>
                     <div class="header-logo-wrapper">
-                        <NuxtLink to="/" class="header-logo">
-                            <img :src="logo" :alt="businessName" class="header-logo-img" />
+                        <NuxtLink
+                            to="/"
+                            class="header-logo"
+                        >
+                            <img
+                                :src="logo"
+                                :alt="businessName"
+                                class="header-logo-img"
+                            />
                         </NuxtLink>
                     </div>
                     <div class="search-bar-wrapper">
@@ -37,13 +58,21 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                     </div>
                     <div class="header-actions">
                         <div class="header-contact-wrapper">
-                            <a href="#" class="header-contact" aria-label="Call to 24-Hour Support">
+                            <a
+                                href="#"
+                                class="header-contact"
+                                aria-label="Call to 24-Hour Support"
+                            >
                                 <div class="header-contact-icon">
                                     <span class="icon" />
                                 </div>
                                 <div class="header-contact-content">
                                     <div class="label">24-Hour Support</div>
-                                    <StorePhoneWithExtension :phone="phone" :phone-ext="phoneExt" class="header-phone" />
+                                    <StorePhoneWithExtension
+                                        :phone="phone"
+                                        :phone-ext="phoneExt"
+                                        class="header-phone"
+                                    />
                                 </div>
                             </a>
                         </div>

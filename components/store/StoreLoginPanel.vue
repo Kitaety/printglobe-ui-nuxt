@@ -1,7 +1,14 @@
 <template>
     <div>
-        <input v-model="email" type="email" name="email" />
-        <input v-model="password" name="password" />
+        <input
+            v-model="email"
+            type="email"
+            name="email"
+        />
+        <input
+            v-model="password"
+            name="password"
+        />
         <button @click="onLoging">Login</button>
     </div>
 </template>

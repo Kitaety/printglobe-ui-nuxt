@@ -10,11 +10,11 @@
         "postinstall": "nuxt prepare",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,json,scss}\"",
-		"precommit": "lint-staged",
-		"lint-staged-eslint": "eslint . --fix --max-warnings=0",
-		"lint-staged-fix": "eslint . --fix",
-		"lint-staged-prettier": "prettier --write"
+        "prettify": "prettier --write \"{components,pages,plugins,middleware,layouts,composables,assets}/**/*.{js,jsx,ts,tsx,vue,html,css,scss,json,md}\"",
+        "precommit": "lint-staged",
+        "lint-staged-eslint": "eslint . --fix --max-warnings=0",
+        "lint-staged-fix": "eslint . --fix",
+        "lint-staged-prettier": "prettier --write"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,vue}": [
@@ -27,9 +27,9 @@
         ]
     },
     "dependencies": {
-        "@nuxt/eslint": "^1.2.0",
         "@pinia/nuxt": "^0.10.1",
         "@types/ent": "^2.2.8",
+        "@unhead/vue": "^2.0.0-rc.8",
         "classnames": "^2.5.1",
         "ent": "^2.2.2",
         "nuxt": "^3.16.0",
@@ -39,9 +39,12 @@
         "vue-router": "^4.5.0"
     },
     "devDependencies": {
+        "@nuxt/eslint": "^1.2.0",
         "@nuxt/image": "^1.9.0",
         "@nuxtjs/google-fonts": "^3.2.0",
         "eslint": "^9.22.0",
+        "eslint-config-prettier": "^10.1.1",
+        "eslint-plugin-prettier": "^5.2.3",
         "nuxt-lodash": "^2.5.3",
         "prettier": "^3.5.3",
         "sass": "^1.85.1"
