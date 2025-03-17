@@ -23,9 +23,15 @@ export const partnerTabs = {
     noTab: -1
 };
 
-export const partnerPriceOptions = [{value: partnerPriceModels.revenueShare, label: 'Revenue Share'}, {value: partnerPriceModels.discount, label: 'Discount'}];
+export const partnerPriceOptions = [
+    {value: partnerPriceModels.revenueShare, label: 'Revenue Share'},
+    {value: partnerPriceModels.discount, label: 'Discount'}
+];
 export const orderDirectionArrowImgs = {
     down: '/images/downarrow-white.svg',
     up: '/images/uparrow-white.svg'
 };
-export const partnerTaxExemptOptions = [{value: 0, label: 'Not Tax Exempt'}, {value: 1, label: 'Tax Exempt'}];
+export const partnerTaxExemptOptions = [
+    {value: 0, label: 'Not Tax Exempt'},
+    {value: 1, label: 'Tax Exempt'}
+];

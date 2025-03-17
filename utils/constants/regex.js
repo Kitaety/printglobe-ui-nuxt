@@ -8,4 +8,4 @@ export const scriptTagDataAttrRegexp = /^data-/;
 export const endsWithSlashRegexp = /\/$/;
 export const anyHttpRegexp = new RegExp(`^(${httpsProtocol}|${httpProtocol}):`);
 export const newLineRegexp = /\r?\n|\r/g;
-export const newFolderNameRegexp = /[\/.]/g;
+export const newFolderNameRegexp = /[/.]/g;

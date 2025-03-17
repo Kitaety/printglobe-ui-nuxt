@@ -4,8 +4,8 @@ import {cookieScriptTypes} from '../constants/cookies';
 import {defaultPageSchema, noindexPages} from '../constants/head';
 import {startsWithArray} from './string';
 import {parseBoolean} from './common';
-import { CommunicationApproachEnum, type WlPartnerInfo } from '../types/partner';
-import type { PageState } from '../types/page';
+import {CommunicationApproachEnum, type WlPartnerInfo} from '../types/partner';
+import type {PageState} from '../types/page';
 
 export const getMetaTemplate = (partnerData: WlPartnerInfo, pageState: PageState) => {
     const config = useRuntimeConfig().public;
@@ -13,7 +13,7 @@ export const getMetaTemplate = (partnerData: WlPartnerInfo, pageState: PageState
     const isPartner = Boolean(partnerData.partner_id);
     const partnerFavicon = isPartner && partnerData.favicon ? partnerData.favicon : defaultWLFavicon;
     const addNoIndexRobots = parseBoolean(config.preventCrawlers) || isPartner || startsWithArray(canonical, noindexPages);
-	
+
     const result = {
         meta: [
             {charset: 'utf-8'},
@@ -34,14 +34,14 @@ export const getMetaTemplate = (partnerData: WlPartnerInfo, pageState: PageState
             {rel: 'icon', type: imageTypes.favicon, href: isPartner ? partnerFavicon : pgFavicon},
             {rel: stylesheetType, href: 'https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css'},
             {rel: preconnectType, href: 'https://fonts.googleapis.com'},
-            {rel: preconnectType, href: 'https://fonts.gstatic.com', crossorigin: '' as ''},
+            {rel: preconnectType, href: 'https://fonts.gstatic.com', crossorigin: '' as const},
             {rel: stylesheetType, href: 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'},
             !isPartner
                 ? {
                       rel: stylesheetType,
                       href: 'https://tgscript.s3.amazonaws.com/cert-style-v1.024.css',
                       integrity: 'sha384-PzfduepNOPTKNfShxcius5IlrRQUUwINOCc14DrQlKzVnKWHX2OvyT01RRPVD43C',
-                      crossorigin: '' as ''
+                      crossorigin: '' as const
                   }
                 : undefined,
             prev ? {rel: 'prev', href: `${httpsProtocol}://${host}${prev}`} : undefined,
@@ -233,8 +233,7 @@ export const getSecondOrderScriptsTemplate = (partnerData: WlPartnerInfo, page: 
     const gtmId = isPartner ? config.wlGoogleTagManagerId : config.googleTagManagerId;
     const marketingScriptType = enableCookieSettings ? cookieScriptTypes.marketing : defaultScriptType;
 
-    const showLiveChat =
-        removeChat !== true && (!isPartner || partnerData.communication_approach === CommunicationApproachEnum.communicateWithClient);
+    const showLiveChat = removeChat !== true && (!isPartner || partnerData.communication_approach === CommunicationApproachEnum.communicateWithClient);
 
     const result = {
         noscript: [

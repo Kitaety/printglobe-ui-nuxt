@@ -7,11 +7,12 @@ export const getPartners = (data: {page: number; pageSize: number; filterTerm: s
         body: data
     });
 
-export const getPartnerConfig = () => useFetch<BaseResponse>(getPartnerDataRoute, {
-	headers: {
-		domain: useRequestURL().hostname
-	}
-});
+export const getPartnerConfig = () =>
+    useFetch<BaseResponse>(getPartnerDataRoute, {
+        headers: {
+            domain: useRequestURL().hostname
+        }
+    });
 
 export const getPartnerPrefixSku = (id: number) => useFetch(`${getPartnerPrefixSkuRoute}/${id}`);
 

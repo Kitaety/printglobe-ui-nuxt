@@ -85,14 +85,12 @@ export const faqSections = serverRoot => [
                     {
                         id: '1',
                         title: 'Proof Approval',
-                        text:
-                            'After the first payment has been received, your job will go into our Graphic Design Department. If we are creating art for you (fees will be discussed in advance), then you will see a proof in a format that works best for you. If you have supplied us with print-ready art, one of our designers will pre-flight the file(s) to ensure that it is ready to go to print. If there are any problems with your art, your Account Manager will contact you immediately to discuss them. You will receive a proof of your art, at which time we ask that you print, sign, and email it back to us indicating your approval. Your first proof will be provided within 1 business day of your order. If you need your proof sooner, discuss the details with your Account Manager.'
+                        text: 'After the first payment has been received, your job will go into our Graphic Design Department. If we are creating art for you (fees will be discussed in advance), then you will see a proof in a format that works best for you. If you have supplied us with print-ready art, one of our designers will pre-flight the file(s) to ensure that it is ready to go to print. If there are any problems with your art, your Account Manager will contact you immediately to discuss them. You will receive a proof of your art, at which time we ask that you print, sign, and email it back to us indicating your approval. Your first proof will be provided within 1 business day of your order. If you need your proof sooner, discuss the details with your Account Manager.'
                     },
                     {
                         id: '2',
                         title: 'Art Approval',
-                        text:
-                            'Once your artwork has been approved, your order will then be sent into production. If you have a deadline for production, please contact your Dedicated Account Manager immediately to discuss your options. If you do not specify a timeline, your order will be processed in standard production time. Again, if you have any questions about standard production, please contact your Account Manager for details. We do have the option for Rush Production, which is an additional charge, but it is available should you need it.'
+                        text: 'Once your artwork has been approved, your order will then be sent into production. If you have a deadline for production, please contact your Dedicated Account Manager immediately to discuss your options. If you do not specify a timeline, your order will be processed in standard production time. Again, if you have any questions about standard production, please contact your Account Manager for details. We do have the option for Rush Production, which is an additional charge, but it is available should you need it.'
                     }
                 ]
             },
@@ -273,8 +271,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '3',
                         title: 'Camera Ready',
-                        text:
-                            'A layout that is created by a client and submitted as one hundred percent black ink on white paper. It is then scanned and turned into plates for printing. Usually contains text and logos in finished form.'
+                        text: 'A layout that is created by a client and submitted as one hundred percent black ink on white paper. It is then scanned and turned into plates for printing. Usually contains text and logos in finished form.'
                     },
                     {
                         id: '4',
@@ -289,8 +286,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '6',
                         title: 'Color Correction',
-                        text:
-                            'Adjusting an image to improve overall color when printed. Colors displayed on computer screens usually do not accurately reflect how the color will appear when printed.'
+                        text: 'Adjusting an image to improve overall color when printed. Colors displayed on computer screens usually do not accurately reflect how the color will appear when printed.'
                     },
                     {
                         id: '7',
@@ -300,8 +296,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '8',
                         title: 'Color Separations',
-                        text:
-                            'The process of separating CMYK into film layers, each layer is then printed separately one on top of the other to give the impression of full color.'
+                        text: 'The process of separating CMYK into film layers, each layer is then printed separately one on top of the other to give the impression of full color.'
                     },
                     {
                         id: '9',
@@ -341,14 +336,12 @@ export const faqSections = serverRoot => [
                     {
                         id: '16',
                         title: 'EPS (Encapsulated Postscript File)',
-                        text:
-                            'A file format that transfers easily between computer systems. This format is often used for high-resolution images that will be added to another document. (Example: Illustrator is a commonly known EPS format.)'
+                        text: 'A file format that transfers easily between computer systems. This format is often used for high-resolution images that will be added to another document. (Example: Illustrator is a commonly known EPS format.)'
                     },
                     {
                         id: '17',
                         title: 'File Format',
-                        text:
-                            'Each different type of file has a different format. A file format specifies how information is organized. (Example: EPS is a standard format supported by many programs.)'
+                        text: 'Each different type of file has a different format. A file format specifies how information is organized. (Example: EPS is a standard format supported by many programs.)'
                     },
                     {
                         id: '18',
@@ -378,14 +371,12 @@ export const faqSections = serverRoot => [
                     {
                         id: '23',
                         title: 'High-Res',
-                        text:
-                            'The resolution (Res) of an image indicates the number of dots per inch (dpi). High resolution is usually anywhere from 300 dpi to 2,500 dpi.'
+                        text: 'The resolution (Res) of an image indicates the number of dots per inch (dpi). High resolution is usually anywhere from 300 dpi to 2,500 dpi.'
                     },
                     {
                         id: '24',
                         title: 'JPEG or JPG (Joint Photographic Experts Group)',
-                        text:
-                            'A file format used for color images. It retains a higher degree of color but files are smaller, but remember the more you compress a JPEG file the more detail and color is lost.'
+                        text: 'A file format used for color images. It retains a higher degree of color but files are smaller, but remember the more you compress a JPEG file the more detail and color is lost.'
                     },
                     {
                         id: '25',
@@ -395,14 +386,12 @@ export const faqSections = serverRoot => [
                     {
                         id: '26',
                         title: 'Low-Res',
-                        text:
-                            'The resolution of an image indicates the number of dots per inch (dpi). Low resolution is usually anywhere from 72 dpi to 250 dpi.'
+                        text: 'The resolution of an image indicates the number of dots per inch (dpi). Low resolution is usually anywhere from 72 dpi to 250 dpi.'
                     },
                     {
                         id: '27',
                         title: 'PDF (Portable Document Format)',
-                        text:
-                            'A popular way of formatting documents so they can be viewed and printed on multiple platforms the way you intended. You use Adobe Acrobat Reader to view a PDF.'
+                        text: 'A popular way of formatting documents so they can be viewed and printed on multiple platforms the way you intended. You use Adobe Acrobat Reader to view a PDF.'
                     },
                     {
                         id: '28',
@@ -432,20 +421,17 @@ export const faqSections = serverRoot => [
                     {
                         id: '32',
                         title: 'Raster Art',
-                        text:
-                            'Raster artwork (such as .jpg, .gif, .tif, and .png files) is pixel-based. As a result, raster images have a limited size at which they will print clearly and smoothly. Many of our products will not accept raster artwork. However, our Art Department is well-practiced in converting low resolution raster artwork into clean, smooth, crisp vector artwork.'
+                        text: 'Raster artwork (such as .jpg, .gif, .tif, and .png files) is pixel-based. As a result, raster images have a limited size at which they will print clearly and smoothly. Many of our products will not accept raster artwork. However, our Art Department is well-practiced in converting low resolution raster artwork into clean, smooth, crisp vector artwork.'
                     },
                     {
                         id: '33',
                         title: 'Resolution',
-                        text:
-                            "The quantity of pixels that can fit into one inch determines the sharpness and quality of an image. This is the image's resolution. Files taken from the internet are typically low-res 72 dpi and are often not suitable from printing. Ordinarily, 300 dpi is considered high-res."
+                        text: "The quantity of pixels that can fit into one inch determines the sharpness and quality of an image. This is the image's resolution. Files taken from the internet are typically low-res 72 dpi and are often not suitable from printing. Ordinarily, 300 dpi is considered high-res."
                     },
                     {
                         id: '34',
                         title: 'Reverse / Knockout',
-                        text:
-                            'Type appearing in white or other light color on a black or dark background. Sometimes called a knockout if the type is the color of the paper.'
+                        text: 'Type appearing in white or other light color on a black or dark background. Sometimes called a knockout if the type is the color of the paper.'
                     },
                     {
                         id: '35',
@@ -455,8 +441,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '36',
                         title: 'Safe Area',
-                        text:
-                            'The area inside a product in which it can be guaranteed that artwork and lettering will not be cut off. Printing at the extreme edge of a coaster, for example, may result in artwork elements being trimmed off.'
+                        text: 'The area inside a product in which it can be guaranteed that artwork and lettering will not be cut off. Printing at the extreme edge of a coaster, for example, may result in artwork elements being trimmed off.'
                     },
                     {
                         id: '37',
@@ -471,8 +456,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '39',
                         title: 'TIFF (Tagged Image File Format)',
-                        text:
-                            'A TIFF is the most widely supported file format for storing images on a computer. It can handle a range from one bit to 24 bits of photographic image color with equal ease. A TIFF can be black and white, grayscale or color.'
+                        text: 'A TIFF is the most widely supported file format for storing images on a computer. It can handle a range from one bit to 24 bits of photographic image color with equal ease. A TIFF can be black and white, grayscale or color.'
                     },
                     {
                         id: '40',
@@ -482,8 +466,7 @@ export const faqSections = serverRoot => [
                     {
                         id: '41',
                         title: 'Vector Image',
-                        text:
-                            'Are more flexible than bitmapped/raster images because they can be resized and placed over other images without a white block. Vector artwork is also resolution-independent. That is, a vector can be enlarged to any size with absolutely no loss of resolution of detail. Raster images will exhibit stair-stepping loss of detail when enlarged beyond their target resolution.'
+                        text: 'Are more flexible than bitmapped/raster images because they can be resized and placed over other images without a white block. Vector artwork is also resolution-independent. That is, a vector can be enlarged to any size with absolutely no loss of resolution of detail. Raster images will exhibit stair-stepping loss of detail when enlarged beyond their target resolution.'
                     }
                 ]
             }

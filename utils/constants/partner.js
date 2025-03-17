@@ -1,4 +1,3 @@
-
 export const communicationApproachLabel = {
     1: 'Communicate with partner',
     2: 'Communicate with client'

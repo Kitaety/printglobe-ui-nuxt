@@ -1,13 +1,13 @@
 import {getProfileContactInfo} from '~/utils/services/profileService';
-import type { ProfileContactInfo, ProfileState } from '~/utils/types/profile';
+import type {ProfileContactInfo, ProfileState} from '~/utils/types/profile';
 
 const initState: ProfileState = {
-	isLogin: false,
-	contactInfo: null,
-	addresses: [],
-	isAdminLogin: false,
-	modifyCartItem: null,
-	recentItems: []
+    isLogin: false,
+    contactInfo: null,
+    addresses: [],
+    isAdminLogin: false,
+    modifyCartItem: null,
+    recentItems: []
 };
 
 export const useProfileStore = defineStore('profile', {

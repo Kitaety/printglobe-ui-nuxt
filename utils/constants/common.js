@@ -47,7 +47,7 @@ export const defaultWhiteLabelEmail = 'sales@swagsolutions.com';
 export const defaultPurchaseWhiteLabelEmail = 'purchaseorders@swagsolutions.com';
 export const defaultPhoneWithoutCountryCode = '(800) 989-2181';
 export const defaultPhone = `1${defaultPhoneWithoutCountryCode}`;
-export const defaultWLPhone = `(866) 424-0020`;
+export const defaultWLPhone = '(866) 424-0020';
 export const defaultOrderConfirmationPhoneNumber = '(888) 996-3450';
 export const pgTitle = 'PrintGlobe – Custom Printed Promotional Items';
 

@@ -1,3 +1,3 @@
 export type BaseResponse = {
-	data: any
-}
+    data: unknown;
+};

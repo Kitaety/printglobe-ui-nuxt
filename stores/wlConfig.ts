@@ -1,7 +1,7 @@
 import {defaultThemeColor1, defaultThemeColor2, defaultThemeColor3, defaultWhiteLabelEmail, defaultWLGrey} from '~/utils/constants/common';
 import {getColorDarker, getColorLighter} from '~/utils/helpers/color';
 import {getPartnerConfig} from '~/utils/services/partner';
-import { CommunicationApproachEnum, PartnerPriceModelsEnum, PartnerStatusesEnum, type WlPartnerInfo } from '~/utils/types/partner';
+import {CommunicationApproachEnum, PartnerPriceModelsEnum, PartnerStatusesEnum, type WlPartnerInfo} from '~/utils/types/partner';
 
 const initState: WlPartnerInfo = {
     id: 0,

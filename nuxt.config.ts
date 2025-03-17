@@ -1,8 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2024-03-16',
-    devtools: {enabled: true},
-    modules: ['@pinia/nuxt', 'nuxt-lodash'],
+    devtools: {
+        enabled: true,
+
+        timeline: {
+            enabled: true
+        }
+    },
+    modules: ['@pinia/nuxt', 'nuxt-lodash', '@nuxt/eslint', '@nuxt/image', '@nuxtjs/google-fonts'],
     vite: {
         server: {
             allowedHosts: ['printglobe.local', '.printglobe.local', 'printglobe.com', '.printglobe.com', 'swagsolutions.com', '.swagsolutions.com']
@@ -20,6 +26,7 @@ export default defineNuxtConfig({
             brotli: true
         }
     },
+    css: ['./assets/scss/main.scss'],
     runtimeConfig: {
         app: {
             apiRoot: process.env.NUXT_API_ROOT
