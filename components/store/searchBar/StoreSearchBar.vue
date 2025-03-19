@@ -39,7 +39,7 @@
                 type="submit"
                 class="header-search-button icon"
             >
-                <SvgoSearchIcon
+                <LazySvgoSearchIcon
                     aria-label="search"
                     class="search-button-img"
                 />

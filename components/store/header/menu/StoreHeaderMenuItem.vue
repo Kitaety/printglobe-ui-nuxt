@@ -11,8 +11,8 @@
         <a
             ref="linkElement"
             :aria-label="ariaLabel || undefined"
-            className="header-menu-item transition-initial"
-            href="{defaultLink}"
+            class="header-menu-item transition-initial"
+            :href="defaultLink"
             :aria-expanded="isOpen"
         >
             <div
@@ -30,7 +30,7 @@
         <a
             ref="linkElement"
             :aria-label="ariaLabel || undefined"
-            className="header-menu-item transition-initial"
+            class="header-menu-item transition-initial"
             @click="onClick"
             @href="link || defaultLink"
         >

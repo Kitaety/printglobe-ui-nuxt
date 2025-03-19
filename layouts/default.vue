@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import classNames from 'classnames';
+import {useMenuStore} from '~/stores/menu';
 import {useWlConfigStore} from '~/stores/wlConfig';
 // import { defaultAddress1, defaultAddress2, defaultCity, defaultLogo, defaultPhone, defaultPhoneExt, defaultState, defaultZip } from '~/utils/constants/common';
 // import { getWindowInnerWidth } from '~/utils/helpers/window';
@@ -7,6 +8,8 @@ import {CommunicationApproachEnum} from '~/utils/types/partner';
 
 const wlConfigStore = useWlConfigStore();
 const profileStore = useProfileStore();
+const menuStore = useMenuStore();
+
 const config = useRuntimeConfig().public;
 
 const showMobileSearchBar = useState(() => false);
@@ -15,7 +18,7 @@ const showMobileSearchBar = useState(() => false);
 const authCookie = useCookie(config.authCookieName);
 profileStore.setIsLogin(!!authCookie.value);
 
-await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo()]);
+await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo(), menuStore.loadMegaMenu()]);
 
 const isPartner = wlConfigStore.isPartner;
 

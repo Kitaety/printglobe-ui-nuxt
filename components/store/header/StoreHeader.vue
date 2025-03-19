@@ -6,8 +6,7 @@ import {defaultBusinessName, defaultLogo, defaultPhone, printglobeUrl} from '~/u
 
 const pageStore = usePageStore();
 const wlConfigStore = useWlConfigStore();
-
-await pageStore.loadtDocsAction();
+await pageStore.loadDocsAction();
 
 const isPartner = wlConfigStore.isPartner;
 const businessName = isPartner ? wlConfigStore.business_name : defaultBusinessName;
@@ -17,7 +16,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
 </script>
 
 <template>
-    <header :class="classNames('public-header', {open: pageStore.shopByCategory.isOpen})">
+    <header :class="classNames('public-header', {open: pageStore?.shopByCategory?.isOpen})">
         <StoreSkipToContentLink />
         <div>
             <div

@@ -33,7 +33,7 @@ export const usePageStore = defineStore('page', {
         }
     },
     actions: {
-        async loadtDocsAction() {
+        async loadDocsAction() {
             const response = await getDocs();
             const data = response.data.value as {docs: PageDocuments} | null;
             const docs = ((data?.docs || null) as PageDocuments) || null;

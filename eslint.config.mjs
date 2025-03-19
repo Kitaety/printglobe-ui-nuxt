@@ -7,6 +7,7 @@ export default withNuxt(eslintPluginPrettierRecommended, {
         'vue/html-quotes': ['error', 'double', {avoidEscape: true}],
         'vue/no-v-html': ['off'],
         quotes: ['error', 'single', {avoidEscape: true}],
-        'vue/html-self-closing': ['off']
+        'vue/html-self-closing': ['off'],
+        'no-console': ['error']
     }
 });

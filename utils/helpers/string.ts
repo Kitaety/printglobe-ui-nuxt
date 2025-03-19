@@ -9,5 +9,5 @@ export function removeNewLine(string: string, replaceString = ' ') {
 }
 
 export function startsWithArray(str: string, strArr: string[]) {
-    return strArr.some(subStr => str.toLowerCase().startsWith(subStr.toLowerCase()));
+    return str && strArr.some(subStr => str.toLowerCase().startsWith(subStr.toLowerCase()));
 }
