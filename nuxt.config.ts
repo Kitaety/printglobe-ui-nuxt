@@ -8,7 +8,7 @@ export default defineNuxtConfig({
             enabled: true
         }
     },
-    modules: ['@pinia/nuxt', 'nuxt-lodash', '@nuxt/eslint', '@nuxt/image', '@nuxtjs/google-fonts'],
+    modules: ['@pinia/nuxt', 'nuxt-lodash', '@nuxt/eslint', '@nuxt/image', '@nuxtjs/google-fonts', 'nuxt-svgo'],
     vite: {
         server: {
             allowedHosts: ['printglobe.local', '.printglobe.local', 'printglobe.com', '.printglobe.com', 'swagsolutions.com', '.swagsolutions.com']
@@ -41,6 +41,9 @@ export default defineNuxtConfig({
         },
         preconnect: true,
         useStylesheet: true
+    },
+    svgo: {
+        autoImportPath: './assets/icons'
     },
     runtimeConfig: {
         app: {

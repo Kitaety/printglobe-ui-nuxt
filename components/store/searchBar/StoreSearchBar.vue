@@ -39,10 +39,9 @@
                 type="submit"
                 class="header-search-button icon"
             >
-                <img
+                <SvgoSearchIcon
+                    aria-label="search"
                     class="search-button-img"
-                    src="/images/searchIcon.svg"
-                    alt="search"
                 />
             </button>
         </form>
@@ -109,13 +108,25 @@ const onSubmit = (e: Event) => {
     }
 };
 const search = async () => {
-    const router = useRoute();
-    router.query.q = state.value.searchTerm;
-    //TODO redirect to search page
+    const route = useRoute();
+    const router = useRouter();
+    route.query.q = state.value.searchTerm;
+
     try {
-        const response = await makeSearch(router.query);
-        const data = response.data.value as {products: []; total: number; aggregations: []; params: Record<string, string>};
-        searchStore.setSearchResults(data.products, data.total, data.aggregations, data.params);
+        console.log(route);
+        if (route.path === '/search') {
+            const response = await makeSearch(route.query);
+            const data = response.data.value as {
+                products: [];
+                total: number;
+                aggregations: [];
+                params: Record<string, string>;
+            };
+            searchStore.setSearchResults(data.products, data.total, data.aggregations, data.params);
+        }
+
+        router.push({path: '/search', query: route.query});
+
         state.value.showModal = false;
         state.value.selectedIndex = -1;
         state.value.searchTerm = props.keepTerm ? state.value.searchTerm : '';
@@ -161,7 +172,10 @@ const navigateSearchResults = (e: KeyboardEvent) => {
     const router = useRouter();
 
     const all_results = [
-        ...autocomplete.sub_categories.map(sc => ({...sc, type: 'sub_category'})),
+        ...autocomplete.sub_categories.map(sc => ({
+            ...sc,
+            type: 'sub_category'
+        })),
         ...autocomplete.products.map(p => ({...p, type: 'product'}))
     ];
     const total = all_results.length;

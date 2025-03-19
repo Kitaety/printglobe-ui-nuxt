@@ -1,5 +1,5 @@
-<!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
+import {LazyNuxtImg} from '#components';
 import classNames from 'classnames';
 import {usePageStore} from '~/stores/page';
 import {defaultBusinessName, defaultLogo, defaultPhone, printglobeUrl} from '~/utils/constants/common';
@@ -46,7 +46,9 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                             to="/"
                             class="header-logo"
                         >
-                            <img
+                            <LazyNuxtImg
+                                width="179px"
+                                height="160px"
                                 :src="logo"
                                 :alt="businessName"
                                 class="header-logo-img"
@@ -54,7 +56,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                         </NuxtLink>
                     </div>
                     <div class="search-bar-wrapper">
-                        <StoreSearchBar show-text />
+                        <StoreSearchBar :show-text="false" />
                     </div>
                     <div class="header-actions">
                         <div class="header-contact-wrapper">
@@ -81,6 +83,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                 </div>
             </div>
         </div>
-        //TODO SecondaryHeaderList //TODO MobileHeader
+        <StoreHeaderMenu />
+        //TODO MobileHeader
     </header>
 </template>
