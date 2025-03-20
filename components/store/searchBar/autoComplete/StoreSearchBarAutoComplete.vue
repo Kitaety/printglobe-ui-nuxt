@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div className="container">
-            <div className="autocomplete-wrapper">
+        <div class="container">
+            <div class="autocomplete-wrapper">
                 <div v-if="autocomplete.sub_categories.length > 0">
-                    <h2 className="autocomplete-result-section-title">Category Matches</h2>
+                    <h2 class="autocomplete-result-section-title">Category Matches</h2>
                     <ul>
                         <StoreSearchBarAutoCompleteItem
                             v-for="(result, index) in autocomplete.sub_categories"
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div v-if="autocomplete.products.length > 0">
-                    <h2 className="autocomplete-result-section-title">Product Matches</h2>
+                    <h2 class="autocomplete-result-section-title">Product Matches</h2>
                     <ul>
                         <StoreSearchBarAutoCompleteItem
                             v-for="(result, index) in autocomplete.products"

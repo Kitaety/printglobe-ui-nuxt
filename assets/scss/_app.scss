@@ -1,0 +1,25 @@
+@use 'vars' as *;
+
+#app {
+    height: 100%;
+    min-height: 100vh;
+
+    .storefront {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &.no-scroll {
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        .site-body {
+            background-color: $color-background-white;
+            margin-top: 0;
+        }
+    }
+}

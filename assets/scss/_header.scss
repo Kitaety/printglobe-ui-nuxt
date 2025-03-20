@@ -1,0 +1,294 @@
+@use 'vars' as *;
+
+.search-wrapper {
+    // @include span-columns(15);
+    width: 100%;
+    margin-right: 0;
+
+    @include media('small') {
+        max-width: 100%;
+    }
+
+    .header-search {
+        border: 2px solid var(--theme-color-3, $color-text-teal);
+        background-color: var(--theme-color-3, $color-text-teal);
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+
+        label {
+            width: 100%;
+
+            .header-search-input {
+                width: 100%;
+                border: 0;
+                height: 40px;
+                border-radius: 4px 0 0 4px;
+                min-height: 0;
+                padding-left: 10px;
+                font-size: 17px;
+                @include media('large') {
+                    &:hover {
+                        background-color: var(--theme-color-3-tint5, $color-background-light-grey);
+                        outline: none;
+                    }
+                }
+                &:focus,
+                &:active {
+                    background-color: var(--theme-color-3-tint5, $color-background-light-grey);
+                    outline: none;
+                }
+            }
+        }
+
+        &.icon {
+            .header-search-button {
+                border-left: 0;
+                min-height: 38px;
+                height: 38px;
+            }
+
+            .header-search-input {
+                height: 38px;
+            }
+        }
+
+        .header-search-button {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            background-color: $color-background-dark-grey;
+            border: 0;
+            border-left: 2px solid var(--theme-color-3, $color-text-teal);
+            border-radius: 0 4px 4px 0;
+            padding: 3px 30px;
+            color: var(--theme-color-3, $color-text-teal);
+            text-align: center;
+            width: 150px;
+            height: 40px;
+            min-height: 40px;
+
+            &:hover {
+                background-color: $color-background-darker-grey;
+            }
+
+            &.icon {
+                width: 40px;
+                background-color: transparent;
+                padding: 3px 6px;
+
+                &:hover {
+                    background-color: transparent;
+                }
+
+                .search-button-img {
+                    width: 30px;
+                    padding: 2px;
+                }
+            }
+        }
+    }
+}
+
+.public-header {
+    background-color: $color-background-white;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    z-index: $z-index-header;
+    font-family: 'Open Sans', sans-serif;
+
+    &.open {
+        position: absolute;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    @include media('large') {
+        .primary-header {
+            border-bottom: 1px solid $color-header-divider;
+        }
+    }
+    @include media('small') {
+        background-color: $color-header-background;
+        border-bottom: 1px solid $color-text-light-grey;
+    }
+
+    .header-slogan {
+        padding: 10px 30px;
+        background: var(--theme-color-1, $color-text-teal);
+        color: var(--theme-color-2, $color-background-white);
+        font-size: 18px;
+        text-align: center;
+
+        @include media('small') {
+            display: none;
+        }
+    }
+
+    .primary-header {
+        height: 100%;
+        display: flex;
+
+        @include media('small') {
+            display: none;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            align-items: center;
+
+            .header-logo-wrapper {
+                height: 100%;
+                width: 50%;
+                min-width: 179px;
+
+                .header-logo {
+                    height: 100%;
+                    width: 100%;
+                    outline: none;
+                    vertical-align: middle;
+                    @include media('large') {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    @include media('small') {
+                        display: inline-block;
+                        padding-top: 5px;
+                        height: 50px;
+                    }
+
+                    .header-logo-img {
+                        min-width: 179px;
+                        object-fit: contain;
+                        object-position: left;
+                        width: 100%;
+                        height: 100%;
+                        padding: 25px 0;
+                        max-height: 160px;
+                        max-width: 780px;
+                    }
+                }
+            }
+
+            .search-bar-wrapper {
+                height: 100%;
+                width: 100%;
+                padding: 20px;
+
+                .search-wrapper {
+                    margin: auto;
+                }
+            }
+
+            .header-actions {
+                width: 33%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: flex-start;
+
+                .header-contact-wrapper {
+                    width: 100%;
+                    margin: 5px 0;
+
+                    .header-contact {
+                        display: flex;
+                        width: 100%;
+                        height: 100%;
+                        color: $color-text-black;
+                        text-decoration: none;
+                        align-items: center;
+
+                        .header-contact-icon {
+                            display: block;
+                            width: 40px;
+                            height: 40px;
+                            background-color: var(--theme-color-3, $color-text-teal);
+                            border-radius: 50%;
+
+                            .icon {
+                                width: 100%;
+                                height: 100%;
+                                display: block;
+                                margin: auto;
+                                background-color: $color-background-white;
+
+                                @include mask-image('@/assets/icons/phone-icon.svg');
+                            }
+                        }
+
+                        .header-contact-content {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: start;
+                            justify-content: center;
+                            font-size: 16px;
+                            padding-left: 10px;
+
+                            .header-phone {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+
+                .header-livechat-button-wrapper {
+                    width: 100%;
+                    margin: 5px 0;
+
+                    .header-livechat-button {
+                        display: flex;
+                        width: 100%;
+                        height: 100%;
+                        color: $color-text-black;
+                        text-decoration: none;
+                        align-items: center;
+
+                        .header-chat-icon {
+                            display: block;
+                            width: 40px;
+                            height: 40px;
+                            background-color: var(--theme-color-3, $color-text-teal);
+                            border-radius: 50%;
+
+                            .icon {
+                                width: 100%;
+                                height: 100%;
+                                display: block;
+                                margin: auto;
+                                background-color: $color-background-white;
+
+                                @include mask-image('@/assets/icons/chat-icon.svg');
+                            }
+                        }
+
+                        .header-livechat-text {
+                            padding-left: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: start;
+                            justify-content: center;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

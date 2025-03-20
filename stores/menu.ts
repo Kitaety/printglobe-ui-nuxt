@@ -1,4 +1,4 @@
-import {getMegaMenuData} from '~/utils/services/menu';
+import {getMegaMenuData, getThemeMenuData} from '~/utils/services/menu';
 import type {MenuState} from '~/utils/types/menu';
 import type {FetchError} from 'ofetch';
 
@@ -8,6 +8,16 @@ const initState: MenuState = {
         master_categories_without_cats: [],
         super_categories: [],
         masterCats: []
+    },
+    themeMenu: {
+        events: [],
+        holidays: [],
+        themes: [],
+        attributes: [],
+        events_title: '',
+        holidays_title: '',
+        themes_title: '',
+        attributes_title: ''
     }
 };
 
@@ -34,6 +44,24 @@ export const useMenuStore = defineStore('menu', {
                 };
             } catch (err: unknown) {
                 logError(err as Error | FetchError, 'Get mega menu failed');
+                throw err;
+            }
+        },
+        async loadThemeMenu() {
+            try {
+                const response = await getThemeMenuData();
+                if (response.error.value) {
+                    throw response.error.value;
+                }
+                const data = response.data.value;
+                const themeMenu = data?.theme_menu;
+
+                this.themeMenu = {
+                    ...this.themeMenu,
+                    ...themeMenu
+                };
+            } catch (err: unknown) {
+                logError(err as Error | FetchError, 'Get theme menu failed');
                 throw err;
             }
         }

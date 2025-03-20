@@ -1,5 +1,6 @@
 export type MenuState = {
     megaMenu: MegaMenu;
+    themeMenu: ThemeMenu;
 };
 export type MegaMenu = {
     master_categories_with_cats: MegaMenuMasterCategory[];
@@ -40,3 +41,28 @@ export interface SideMenuItem {
     category_id?: number;
     children?: SideMenuItem[];
 }
+
+export type ThemeMenu = {
+    events: ThemeMenuItem[];
+    holidays: ThemeMenuItem[];
+    themes: ThemeMenuItem[];
+    attributes: ThemeMenuItemAttribute[];
+    events_title: string;
+    holidays_title: string;
+    themes_title: string;
+    attributes_title: string;
+};
+
+export type ThemeMenuItem = {
+    sub_category_id: number;
+    sub_category_name: string;
+    sub_category_url_name: string;
+    theme_type: string;
+    display_order: number;
+};
+
+export type ThemeMenuItemAttribute = {
+    feature_id: number;
+    feature_name: string;
+    display_order: number;
+};

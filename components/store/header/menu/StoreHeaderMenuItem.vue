@@ -21,7 +21,8 @@
             />
             <span>{{ text }}</span>
         </a>
-        {{ _renderChildren() }}
+        <slot />
+        <!-- {{ _renderChildren() }} -->
     </li>
     <li
         v-else
@@ -31,8 +32,8 @@
             ref="linkElement"
             :aria-label="ariaLabel || undefined"
             class="header-menu-item transition-initial"
+            :href="link || defaultLink"
             @click="onClick"
-            @href="link || defaultLink"
         >
             <div
                 v-if="icon"
@@ -47,42 +48,18 @@
 <script lang="ts" setup>
 import classNames from 'classnames';
 
-const props = defineProps({
-    dropdown: {
-        default: false,
-        type: Boolean
-    },
-    class: {
-        default: '',
-        type: String
-    },
-    ariaLabel: {
-        default: '',
-        type: String
-    },
-    icon: {
-        default: '',
-        type: String
-    },
-    link: {
-        default: '',
-        type: String
-    },
-    text: {
-        default: '',
-        type: String
-    },
-    isOpen: {
-        default: false,
-        type: Boolean
-    },
-    noFocus: {
-        default: false,
-        type: Boolean
-    }
-});
+const props = defineProps<{
+    dropdown?: boolean;
+    class?: string;
+    ariaLabel?: string;
+    icon?: string;
+    link?: string;
+    text?: string;
+    isOpen?: boolean;
+    noFocus?: boolean;
+}>();
 defineEmits<{
-    onClick: [];
+    onClick: [e: Event];
 }>();
 const defaultLink = !props.noFocus ? '#' : '';
 
@@ -91,9 +68,15 @@ const openDropdown = () => {};
 const closeDropdown = () => {};
 const onBlur = () => {};
 const onFocus = () => {};
+
 const _renderChildren = () => {};
 
 const onClick = () => {};
+const focus = () => {};
+
+defineExpose({
+    focus
+});
 </script>
 
 <style></style>

@@ -1,6 +1,6 @@
 <template>
     <div :class="classNames('header-menu', {'fixed-to-top': fixedToTop})">
-        <div className="container">
+        <div class="container">
             <ul :class="classNames('header-menu-list', {partner: isPartner})">
                 <slot />
             </ul>

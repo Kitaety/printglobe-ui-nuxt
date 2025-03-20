@@ -26,7 +26,6 @@ export default defineNuxtConfig({
             brotli: true
         }
     },
-    css: ['./assets/scss/main.scss'],
     googleFonts: {
         display: 'swap',
         families: {

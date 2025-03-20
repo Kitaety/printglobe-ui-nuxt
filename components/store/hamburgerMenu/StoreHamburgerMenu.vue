@@ -1,19 +1,19 @@
 <template>
-    <div className="transition-initial mega-menu-nav-bar-wrapper">
+    <div class="transition-initial mega-menu-nav-bar-wrapper">
         <div
             id="mega-menu-wrapper"
             :class="classNames('mega-menu-wrapper frozen', {open: isOpen})"
             @click="handleClickOutside"
         >
-            <div className="mega-menu">
-                <div className="menu-header">
-                    <div className="header-text">{{ title }}</div>
+            <div class="mega-menu">
+                <div class="menu-header">
+                    <div class="header-text">{{ title }}</div>
                     <a
                         href="#"
                         aria-label="Close sidebar menu"
                         @click="closeMenu"
                     >
-                        <div className="header-button" />
+                        <div class="header-button" />
                     </a>
                 </div>
                 <StoreHamburgerMenuList

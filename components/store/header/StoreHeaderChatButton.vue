@@ -4,18 +4,18 @@ import {openChat} from '~/utils/helpers/common';
 
 <template>
     <div
-        className="header-livechat-button-wrapper"
+        class="header-livechat-button-wrapper"
         @click="openChat"
     >
         <a
             href="#"
-            className="header-livechat-button"
+            class="header-livechat-button"
             aria-label="Open Live Chat"
         >
-            <div className="header-chat-icon">
-                <span className="icon" />
+            <div class="header-chat-icon">
+                <span class="icon" />
             </div>
-            <div className="header-livechat-text">Live Chat Now!</div>
+            <div class="header-livechat-text">Live Chat Now!</div>
         </a>
     </div>
 </template>

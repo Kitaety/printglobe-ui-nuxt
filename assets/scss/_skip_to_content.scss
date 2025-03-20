@@ -1,0 +1,23 @@
+@use 'vars' as *;
+
+.skip-to-content-link {
+    background: $color-highlight-light-orange;
+    height: 30px;
+    left: 50%;
+    padding: 8px;
+    position: absolute;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+    z-index: $z-index-upperest;
+
+    &:focus {
+        transform: translateY(0%);
+    }
+}
+
+.skip-to-content-anchor {
+    display: block;
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}

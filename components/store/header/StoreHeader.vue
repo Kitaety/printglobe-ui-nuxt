@@ -21,7 +21,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
         <div>
             <div
                 v-if="!!pageStore.documents.headerSlogan"
-                className="header-slogan"
+                class="header-slogan"
                 v-html="pageStore.documents.headerSlogan"
             />
             <div class="primary-header">
@@ -55,7 +55,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                         </NuxtLink>
                     </div>
                     <div class="search-bar-wrapper">
-                        <StoreSearchBar :show-text="false" />
+                        <StoreSearchBar show-text />
                     </div>
                     <div class="header-actions">
                         <div class="header-contact-wrapper">

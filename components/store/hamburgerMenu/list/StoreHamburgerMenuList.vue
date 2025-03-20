@@ -1,5 +1,5 @@
 <template>
-    <ul className="menu-list">
+    <ul class="menu-list">
         <StoreHamburgerMenuListItem
             v-if="!!parentItem"
             :item="parentItem"

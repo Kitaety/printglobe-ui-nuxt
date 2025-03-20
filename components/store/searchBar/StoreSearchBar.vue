@@ -62,6 +62,7 @@ import {useSearchStore} from '~/stores/search';
 import {isServer} from '~/utils/helpers/common';
 import {makeSearch, searchAutocomplete} from '~/utils/services/search';
 import type {SearchBarAutoComplete} from '~/utils/types/searchBar';
+import type {FetchError} from 'ofetch';
 
 const props = defineProps({
     showText: Boolean,
@@ -113,9 +114,11 @@ const search = async () => {
     route.query.q = state.value.searchTerm;
 
     try {
-        console.log(route);
         if (route.path === '/search') {
             const response = await makeSearch(route.query);
+            if (response.error) {
+                throw response.error;
+            }
             const data = response.data.value as {
                 products: [];
                 total: number;
@@ -131,7 +134,7 @@ const search = async () => {
         state.value.selectedIndex = -1;
         state.value.searchTerm = props.keepTerm ? state.value.searchTerm : '';
     } catch (err) {
-        console.warn('Search failed', err);
+        logError(err as Error | FetchError, 'Search failed');
         searchStore.clearSearch();
     }
 };
@@ -152,7 +155,6 @@ const fetchAutocomplete = useDebounce((query: LocationQuery) => {
             state.value.showModal = !!query.q;
             state.value.selectedIndex = -1;
             state.value.autocomplete = response.data.value as SearchBarAutoComplete;
-            console.log({data: response.data.value});
 
             if (state.value.autocomplete.products.length > 0 || state.value.autocomplete.sub_categories.length > 0) {
                 document.addEventListener('keydown', navigateSearchResults, false);
@@ -161,7 +163,7 @@ const fetchAutocomplete = useDebounce((query: LocationQuery) => {
             }
         })
         .catch(err => {
-            console.warn('autocomplete failed', err);
+            logError(err as Error | FetchError, 'autocomplete failed');
             state.value.showModal = false;
         });
 }, 300);

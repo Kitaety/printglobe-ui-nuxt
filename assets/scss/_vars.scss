@@ -1,0 +1,274 @@
+$color-primary: #00758b;
+$color-primary-dark: #0b6274;
+$color-secondary: #d3d3d3;
+$color-secondary-dark: #b1b1b1;
+$color-secondary-darker: #4d4d4d;
+$color-white: #ffffff;
+$color-black: #000;
+$color-yellow: #f6b11b;
+
+$color-background-blue: #d8f1f4;
+$color-background-seafoam-shade: #cee5ec;
+$color-background-seafoam-shade-border: #a0ced8;
+$color-background-dark-blue: #344e75;
+$color-background-darker-blue: #1f3d56;
+$color-background-dark-grey: #e5e5e5;
+$color-background-darker-grey: #b1b1b1;
+$color-background-grey: #ededed;
+$color-background-grey2: #e1e1e1;
+$color-lightish-grey: #ccc;
+$color-lightish-grey2: #aaa;
+$color-background-input: #fdfdf4;
+$color-background-light-grey: #f8f8f8;
+$color-background-lighter-grey: #fdfdfd;
+$color-background-light-grey2: #f1f1f1;
+$color-background-light-grey3: #efefef;
+$color-background-light-grey4: #f4f4f4;
+$color-background-light-grey5: #eaeaea;
+$color-background-light-red: #ffcccf;
+$color-background-orange: #f2b116;
+$color-background-teal-dark: #008293;
+$color-background-teal-darker: #008d9e;
+$color-background-teal-darkest: #008393;
+$color-background-teal-darkest-forgot-password: #007e8e;
+$color-background-teal-0: #007782;
+$color-background-teal: #ebf8f9;
+$color-background-white: #ffffff;
+$color-background-yellow-orange: #ecd66d;
+$color-background-light-yellow: #fffbee;
+$color-background-yellow: #f9f7d5;
+$color-background-pink: #eccdcc;
+$color-background-button-primary: #00758a;
+$color-divider-grey: #e7e7e7;
+$color-divider-dark-grey: #d0d0d0;
+
+$color-button-background: #e03400;
+$color-button-background-secondary: #dd6427;
+$color-button-background-third: #d14c11;
+$color-highlight-orange: #ff612b;
+$color-highlight-hover-orange: #ff7546;
+$color-highlight-light-orange: #f47722;
+$color-highlight-dark-orange: #da3c06;
+
+$color-highlight-teal: #92c7d0;
+$color-text-darker-grey: #4d4d4d;
+$color-text-darkish-grey: #767676;
+$color-text-dark-grey: #808080;
+$color-text-grey: #6b6b6b;
+$color-text-light-grey: #b2b2b2;
+$color-text-light-grey2: #a3a3a3;
+$color-border-grey: #767676;
+$color-text-white: #ffffff;
+$color-text-teal: #00758b;
+$color-text-teal2: #007682;
+$color-text-teal3: #058096;
+$color-text-light-teal: #3bb7c6;
+$color-bg-blue-lighten: #cee5ec;
+$color-text-blue-darken: #008392;
+$color-blue-darken: #17a0af;
+
+$color-calendar: #0b6274;
+
+$color-text-maroon: #600a3e;
+$color-text-red: #b8071e;
+$color-text-green: #009900;
+$color-text-black: #000000;
+$color-text-teal-white: #e2f4f6;
+$color-text-dark-red: #a00200;
+$color-text-off-black: #333333;
+$color-text-orange: #e03400;
+$color-text-orange2: #dd3100;
+$color-orange-dark-hover: #e46a28;
+$color-orange-dark-hover2: #d72b00;
+
+$color-header-background: #fcfcfc;
+$color-header-divider: #d3d3d3;
+
+$color-button-golden: #f0c24d;
+$color-button-golden-lighter: #f6db9a;
+$color-button-golden-lightest: #fbecc8;
+$color-button-golden-darken: #a88734;
+
+$color-shadow-black: rgba(
+    $color: #000,
+    $alpha: 0.2
+);
+
+$color-focus: rgba(0, 109, 220, 0.5);
+/* set large values because there are third-party styles with a very large z-index */
+$z-index-up: 9999;
+$z-index-upper: 99999;
+$z-index-upperest: 9999999;
+$z-index-header: 100000;
+$hide-absolute-position: -9999px;
+$hamburger-menu-header-heigth: 50px;
+$max-heigth-cart-items-section: 1550px;
+$color-customer-review-info: #a89b90;
+$color-customer-review-text: #424e5c;
+$color-shadow: rgba(56, 56, 56, 0.13);
+$color-live-chat-dark-blue: #14295e;
+$color-live-chat-golden: #ab8d2c;
+
+//_grid-settings
+
+$sizes: (
+    'tiny': 'max-width: 320px',
+    'smaller': 'max-width: 480px',
+    'small': 'max-width: 768px',
+    'large': 'min-width: 769px',
+    'larger': 'min-width: 1025px',
+    'header-small': '(max-width: 1092px) and (min-width: 769px)',
+    'header-large': 'min-width: 1093px',
+    'bottom-banner-mobile': 'max-width: 1025px'
+);
+
+//mixins
+@mixin media($breakpoint) {
+    @each $size, $resolution in $sizes {
+        @if $breakpoint == $size {
+            @media only screen and (#{$resolution}) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin close-mask($color) {
+    &:after {
+        content: '';
+        mask-image: url('../../public/images/close.svg');
+        -webkit-mask-image: url('../../public/images/close.svg');
+        mask-position: center;
+        -webkit-mask-position: center;
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        background-color: $color;
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        right: 5px;
+        left: 5px;
+    }
+}
+
+@mixin checkmark-mask($color) {
+    &:after {
+        content: '';
+        mask-image: url('../../public/images/checkmark-white.svg');
+        -webkit-mask-image: url('../../public/images/checkmark-white.svg');
+        mask-position: center;
+        -webkit-mask-position: center;
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        background-color: $color;
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        right: 5px;
+        left: 5px;
+    }
+}
+
+@mixin expand-arrow-mask($color) {
+    &:after {
+        content: '';
+        mask-image: url('../../public/images/downarrow-white.svg');
+        -webkit-mask-image: url('../../public/images/downarrow-white.svg');
+        mask-position: center;
+        -webkit-mask-position: center;
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        background-color: $color;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin check-mark-icon() {
+    mask-image: url('../../public/images/check-mark.svg');
+    -webkit-mask-image: url('../../public/images/check-mark.svg');
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+
+@mixin mask-image($url) {
+    mask-image: url($url);
+    -webkit-mask-image: url($url);
+    @include mask-image-without-url();
+}
+
+@mixin mask-image-without-url() {
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+
+@mixin box-shadow() {
+    -webkit-box-shadow: 0px 5px 10px 0px $color-shadow-black;
+    -moz-box-shadow: 0px 5px 10px 0px $color-shadow-black;
+    box-shadow: 0px 5px 10px 0px $color-shadow-black;
+}
+
+@mixin focus() {
+    -webkit-box-shadow: 0px 0px 5px 4px $color-focus;
+    -moz-box-shadow: 0px 0px 5px 4px $color-focus;
+    box-shadow: 0px 0px 5px 4px $color-focus;
+}
+
+@mixin star-on() {
+    @include mask-image('../../public/images/star_on.svg');
+    background-color: $color-button-background;
+    background-image: none;
+}
+
+@mixin star-on-half() {
+    @include mask-image('../../public/images/star_on_half.svg');
+    background-image: none;
+}
+
+@mixin star-off() {
+    @include mask-image('../../public/images/star_off.svg');
+    background-color: $color-button-background;
+    background-image: none;
+}
+
+@mixin gradient-grey() {
+    background: $color-background-grey;
+    background: -moz-linear-gradient(90deg, $color-background-grey 60%, $color-background-grey2 95%);
+    background: -webkit-linear-gradient(90deg, $color-background-grey 60%, $color-background-grey2 95%);
+    background: -o-linear-gradient(90deg, $color-background-grey 60%, $color-background-grey2 95%);
+    background: -ms-linear-gradient(90deg, $color-background-grey 60%, $color-background-grey2 95%);
+    background: linear-gradient(180deg, $color-background-grey 60%, $color-background-grey2 95%);
+}
+
+@mixin gradient-blue() {
+    background: -moz-linear-gradient(90deg, $color-text-light-teal 30%, $color-blue-darken 95%);
+    background: -webkit-linear-gradient(90deg, $color-text-light-teal 30%, $color-blue-darken 95%);
+    background: -o-linear-gradient(90deg, $color-text-light-teal 30%, $color-blue-darken 95%);
+    background: -ms-linear-gradient(90deg, $color-text-light-teal 30%, $color-blue-darken 95%);
+    background: linear-gradient(180deg, $color-text-light-teal 3%, $color-blue-darken 95%);
+}

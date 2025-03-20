@@ -9,7 +9,7 @@ import {contentAnchorLink} from '~/utils/constants/skipToContent';
             autoFocus
         />
         <a
-            className="skip-to-content-link"
+            class="skip-to-content-link"
             :href="contentAnchorLink"
         >
             Skip to content

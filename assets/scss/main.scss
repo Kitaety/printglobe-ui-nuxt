@@ -1,3 +1,4 @@
-.container {
-    padding: 50px;
-}
+@use 'app';
+@use 'globals';
+@use 'header';
+@use 'skip_to_content';

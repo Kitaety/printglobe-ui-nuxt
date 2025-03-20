@@ -8,12 +8,12 @@
         >
             <span
                 v-if="isBack && !isLink"
-                className="item-back-arrow"
+                class="item-back-arrow"
             />
-            <span className="item-text">{{ text }}</span>
+            <span class="item-text">{{ text }}</span>
             <span
                 v-if="!isBack && !isLink"
-                className="item-next-arrow"
+                class="item-next-arrow"
             />
         </a>
         <StoreHamburgerMenuList
