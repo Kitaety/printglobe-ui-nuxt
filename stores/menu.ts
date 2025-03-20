@@ -1,5 +1,6 @@
 import {getMegaMenuData} from '~/utils/services/menu';
 import type {MenuState} from '~/utils/types/menu';
+import type {FetchError} from 'ofetch';
 
 const initState: MenuState = {
     megaMenu: {
@@ -21,6 +22,9 @@ export const useMenuStore = defineStore('menu', {
         async loadMegaMenu() {
             try {
                 const response = await getMegaMenuData();
+                if (response.error.value) {
+                    throw response.error.value;
+                }
                 const data = response.data.value;
                 const megaMenu = data?.mega_menu;
 
@@ -29,7 +33,7 @@ export const useMenuStore = defineStore('menu', {
                     ...megaMenu
                 };
             } catch (err: unknown) {
-                logError(err as Error, 'Get mega menu failed');
+                logError(err as Error | FetchError, 'Get mega menu failed');
                 throw err;
             }
         }

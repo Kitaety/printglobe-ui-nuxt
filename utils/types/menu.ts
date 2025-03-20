@@ -5,7 +5,7 @@ export type MegaMenu = {
     master_categories_with_cats: MegaMenuMasterCategory[];
     master_categories_without_cats: MegaMenuMasterCategory[];
     super_categories: MegaMenuMegaSuperCategory[];
-    masterCats: SideMenuMasterCategory[];
+    masterCats: SideMenuItem[];
 };
 
 export type MegaMenuMegaSuperCategory = {
@@ -31,25 +31,12 @@ export type MegaMenuMegaCategory = {
     display_order: number;
 };
 
-export type SideMenuMasterCategory = {
+export interface SideMenuItem {
     id: number;
     name: string;
     url_name: string;
-    display_in_main_menu: number;
-    children: SideMenuCategory[];
-};
-
-export type SideMenuCategory = {
-    id: number;
-    name: string;
-    url_name: string;
-    master_category_id: number;
-    children: SideMenuSubCategory[];
-};
-
-export type SideMenuSubCategory = {
-    id: number;
-    name: string;
-    url_name: string;
-    category_id: number;
-};
+    display_in_main_menu?: number;
+    master_category_id?: number;
+    category_id?: number;
+    children?: SideMenuItem[];
+}

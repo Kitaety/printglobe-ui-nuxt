@@ -5,15 +5,18 @@
     >
         <StoreHeaderMenuItem
             :icon="headerMenuIcons.hamburgerMenu"
-            :text="isPartner ? 'Product Categories' : 'Shop by Category'"
+            :text="sideMenuTitle"
         >
-            Test
+            <StoreHamburgerMenu
+                :is-partner="isPartner"
+                :title="sideMenuTitle"
+            />
         </StoreHeaderMenuItem>
     </StoreHeaderMenuContainer>
 </template>
 
 <script lang="ts" setup>
-defineProps({
+const {isPartner = false} = defineProps({
     isPartner: {
         default: false,
         type: Boolean
@@ -28,4 +31,5 @@ const headerMenuIcons = {
     hamburgerMenu: 'icon-hamburger',
     cart: 'icon-cart'
 };
+const sideMenuTitle = isPartner ? 'Product Categories' : 'Shop by Category';
 </script>

@@ -1,18 +1,19 @@
 /* eslint-disable no-console */
+import type {FetchError} from 'ofetch';
 
-export const logError = (error: Error, message = '') => {
+export const logError = (error: Error | FetchError, message = '') => {
+    const fetchError = error as FetchError;
     console.warn(message || error.message, error);
-    // if (!error.response) {
-    //     console.warn(message || error.message, error);
-    // } else {
-    //     console.warn('Network request failed:', {
-    //         status: error.response.status,
-    //         url: error.config.url,
-    //         method: error.config.method,
-    //         headers: error.response.headers,
-    //         data: error.response.data
-    //     });
-    // }
+    if (fetchError.response) {
+        console.warn('Network request failed:', {
+            status: fetchError.status,
+            url: fetchError.response.url,
+            headers: fetchError.response.headers,
+            data: fetchError.response._data
+        });
+    } else {
+        console.warn(message || error.message, error);
+    }
 };
 
 export const logErrorMessage = (message = '') => console.error(message);
