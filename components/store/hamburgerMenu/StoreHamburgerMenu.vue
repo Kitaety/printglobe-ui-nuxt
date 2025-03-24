@@ -2,6 +2,7 @@
     <div class="transition-initial mega-menu-nav-bar-wrapper">
         <div
             id="mega-menu-wrapper"
+            ref="mega-menu-wrapper"
             :class="classNames('mega-menu-wrapper frozen', {open: isOpen})"
             @click="handleClickOutside"
         >
@@ -27,17 +28,42 @@
 
 <script lang="ts" setup>
 import classNames from 'classnames';
+import {changeContentScrollState} from '~/utils/helpers/browser';
 
 defineProps<{
     isPartner: boolean;
     title: string;
 }>();
 
+const megaMenuWrapper = useTemplateRef<HTMLDivElement>('mega-menu-wrapper');
 const masterCategories = useMenuStore().getMegaMenu.masterCats;
 
-const isOpen = useState(() => false);
+const isOpen = ref(false);
 
-const handleClickOutside = () => {};
-const closeMenu = () => {};
-const _onItemClick = () => {};
+const handleClickOutside = (e: Event) => {
+    if (e.target === megaMenuWrapper.value) {
+        closeMenu();
+    }
+};
+
+const openMenu = () => {
+    changeContentScrollState(true);
+    isOpen.value = true;
+};
+
+const closeMenu = () => {
+    changeContentScrollState(false);
+    isOpen.value = false;
+};
+
+const _onItemClick = (isLink: boolean) => {
+    if (isLink) {
+        closeMenu();
+    }
+};
+
+defineExpose({
+    openMenu,
+    closeMenu
+});
 </script>

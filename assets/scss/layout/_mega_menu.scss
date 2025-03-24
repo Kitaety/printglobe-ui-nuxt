@@ -1,0 +1,166 @@
+@use '../vars' as *;
+
+.mega-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: $z-index-up;
+    background-color: $color-shadow-black;
+
+    &:hover {
+        color: initial;
+        cursor: initial;
+    }
+
+    &.open {
+        display: block;
+
+        &.frozen {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+    .mega-menu {
+        width: 30%;
+        height: 100%;
+        background-color: $color-header-background;
+
+        -webkit-box-shadow: 5px 0px 5px 0px $color-shadow-black;
+        -moz-box-shadow: 5px 0px 5px 0px $color-shadow-black;
+        box-shadow: 5px 0px 5px 0px $color-shadow-black;
+
+        .menu-header {
+            background: var(--theme-color-1, $color-text-teal);
+            color: var(--theme-color-2, $color-text-white);
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            height: $hamburger-menu-header-heigth;
+
+            .header-text {
+                font-weight: bold;
+                margin: auto 20px;
+            }
+
+            .header-button {
+                height: 20px;
+                width: 20px;
+                mask: url('@/assets/icons/close.svg') no-repeat;
+                -webkit-mask: url('@/assets/icons/close.svg') no-repeat;
+                mask-size: cover;
+                mask-position: center;
+                mask-size: cover;
+                -webkit-mask-size: cover;
+                background-color: var(--theme-color-2, $color-text-white);
+                margin: 15px 30px;
+                cursor: pointer;
+            }
+        }
+
+        .menu-list {
+            max-height: calc(100% - #{$hamburger-menu-header-heigth});
+            overflow-y: auto;
+
+            &:has(.menu-item-wrapper.open) > .menu-item-wrapper {
+                display: none;
+
+                &.open {
+                    display: block;
+                }
+            }
+
+            .menu-item-wrapper {
+                &.hide {
+                    display: none;
+                }
+
+                .menu-item {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 15px 20px;
+                    border-top: 1px solid $color-lightish-grey;
+                    font-size: 1rem;
+                    color: $color-text-black;
+
+                    &.bold {
+                        font-weight: bold;
+                    }
+
+                    &.back-item {
+                        background-color: $color-background-dark-grey;
+                        justify-content: start;
+
+                        &:hover {
+                            color: var(--theme-color-3, $color-text-teal);
+
+                            .item-back-arrow {
+                                background-color: var(--theme-color-3, $color-text-teal);
+                            }
+                        }
+                    }
+
+                    &.link-item {
+                        color: initial;
+
+                        &.bold {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .item-back-arrow {
+                        mask: url('@/assets/icons/left-arrow-icon.svg') no-repeat;
+                        -webkit-mask: url('@/assets/icons/left-arrow-icon.svg') no-repeat;
+                        margin: auto 0px;
+                        margin-right: 20px;
+                    }
+
+                    .item-next-arrow {
+                        mask: url('@/assets/icons/right-arrow-icon.svg') no-repeat;
+                        -webkit-mask: url('@/assets/icons/right-arrow-icon.svg') no-repeat;
+                        margin: auto 0px;
+                    }
+
+                    .item-back-arrow,
+                    .item-next-arrow {
+                        mask-size: cover;
+                        mask-position: center;
+                        mask-size: cover;
+                        -webkit-mask-size: cover;
+                        width: 20px;
+                        height: 20px;
+                        background-color: $color-text-black;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: var(--theme-color-3, $color-text-teal);
+
+                        .item-next-arrow {
+                            background-color: var(--theme-color-3, $color-text-teal);
+                        }
+                    }
+                }
+
+                & > .menu-list {
+                    display: none;
+                }
+
+                &.open > .menu-list {
+                    display: block;
+                }
+
+                &.open > .menu-item {
+                    display: none;
+                }
+            }
+        }
+    }
+}

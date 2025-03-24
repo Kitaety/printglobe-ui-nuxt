@@ -33,6 +33,9 @@ export const usePageStore = defineStore('page', {
         }
     },
     actions: {
+        setTitle(title: string) {
+            this.title = title;
+        },
         async loadDocsAction() {
             const response = await getDocs();
             const data = response.data.value as {docs: PageDocuments} | null;

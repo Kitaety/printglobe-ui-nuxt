@@ -12,6 +12,7 @@
             <StoreHeaderMenuSub>
                 <StoreHeaderMenuItem
                     v-for="item in menuStore.themeMenu.events"
+                    ref="childRef"
                     :key="item.sub_category_id"
                     :text="item.sub_category_name"
                     :link="`/${item.sub_category_url_name}`"
@@ -72,8 +73,23 @@
 
 <script lang="ts" setup>
 import {defaultTitles} from '~/utils/constants/shopByOccasion';
+import type StoreHeaderMenuItem from './StoreHeaderMenuItem.vue';
+type StoreHeaderMenuItemType = InstanceType<typeof StoreHeaderMenuItem>;
 
+const childRef = useTemplateRef<StoreHeaderMenuItemType[]>('childRef');
 const formatTitle = (title: string | undefined, defaultValue: string) => (title || defaultValue).toUpperCase();
 
 const menuStore = useMenuStore();
+
+const focus = () => {
+    nextTick(() => {
+        if (childRef.value && childRef.value[0]) {
+            childRef.value[0].focus();
+        }
+    });
+};
+
+defineExpose({
+    focus
+});
 </script>

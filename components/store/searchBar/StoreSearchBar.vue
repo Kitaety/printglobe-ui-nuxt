@@ -1,5 +1,4 @@
 <template>
-    {{ state.searchTerm }}
     <div
         ref="wrapper"
         class="search-wrapper"
@@ -74,12 +73,12 @@ const emit = defineEmits<{
     beforeOnClickAutocomplete: [];
 }>();
 
-const state = useState<{
+const state = reactive<{
     showModal: boolean;
     searchTerm: string;
     autocomplete: SearchBarAutoComplete;
     selectedIndex: number;
-}>(() => ({
+}>({
     showModal: false,
     searchTerm: '',
     autocomplete: {
@@ -87,9 +86,9 @@ const state = useState<{
         sub_categories: []
     },
     selectedIndex: -1
-}));
+});
 
-const countMatchObjects = computed(() => state.value.autocomplete.products.length + state.value.autocomplete.sub_categories.length);
+const countMatchObjects = computed(() => state.autocomplete.products.length + state.autocomplete.sub_categories.length);
 const wrapper = useTemplateRef<HTMLDivElement>('wrapper');
 const searchStore = useSearchStore();
 const handleClickOutside = (event: MouseEvent | TouchEvent) => {
@@ -97,21 +96,21 @@ const handleClickOutside = (event: MouseEvent | TouchEvent) => {
         return;
     }
 
-    if (state.value.showModal) {
-        state.value.showModal = false;
+    if (state.showModal) {
+        state.showModal = false;
     }
 };
 
 const onSubmit = (e: Event) => {
     e.preventDefault();
-    if (state.value.selectedIndex === -1) {
+    if (state.selectedIndex === -1) {
         search();
     }
 };
 const search = async () => {
     const route = useRoute();
     const router = useRouter();
-    route.query.q = state.value.searchTerm;
+    route.query.q = state.searchTerm;
 
     try {
         if (route.path === '/search') {
@@ -130,33 +129,33 @@ const search = async () => {
 
         router.push({path: '/search', query: route.query});
 
-        state.value.showModal = false;
-        state.value.selectedIndex = -1;
-        state.value.searchTerm = props.keepTerm ? state.value.searchTerm : '';
+        state.showModal = false;
+        state.selectedIndex = -1;
+        state.searchTerm = props.keepTerm ? state.searchTerm : '';
     } catch (err) {
         logError(err as Error | FetchError, 'Search failed');
         searchStore.clearSearch();
     }
 };
 const onSearchTermBlur = () => {
-    if (state.value.searchTerm) {
+    if (state.searchTerm) {
         emit('setMobileSearchBar', false);
     }
 };
 const onSearchTermChanged = (event: Event) => {
     const searchTerm = (event.target as HTMLInputElement).value;
-    state.value.searchTerm = searchTerm;
+    state.searchTerm = searchTerm;
     fetchAutocomplete({q: searchTerm});
 };
 
 const fetchAutocomplete = useDebounce((query: LocationQuery) => {
     searchAutocomplete(query)
         .then(response => {
-            state.value.showModal = !!query.q;
-            state.value.selectedIndex = -1;
-            state.value.autocomplete = response.data.value as SearchBarAutoComplete;
+            state.showModal = !!query.q;
+            state.selectedIndex = -1;
+            state.autocomplete = response.data.value as SearchBarAutoComplete;
 
-            if (state.value.autocomplete.products.length > 0 || state.value.autocomplete.sub_categories.length > 0) {
+            if (state.autocomplete.products.length > 0 || state.autocomplete.sub_categories.length > 0) {
                 document.addEventListener('keydown', navigateSearchResults, false);
             } else {
                 document.removeEventListener('keydown', navigateSearchResults, false);
@@ -164,13 +163,13 @@ const fetchAutocomplete = useDebounce((query: LocationQuery) => {
         })
         .catch(err => {
             logError(err as Error | FetchError, 'autocomplete failed');
-            state.value.showModal = false;
+            state.showModal = false;
         });
 }, 300);
 
 const navigateSearchResults = (e: KeyboardEvent) => {
-    let selectedIndex = state.value.selectedIndex;
-    const autocomplete = state.value.autocomplete;
+    let selectedIndex = state.selectedIndex;
+    const autocomplete = state.autocomplete;
     const router = useRouter();
 
     const all_results = [
@@ -196,21 +195,21 @@ const navigateSearchResults = (e: KeyboardEvent) => {
                 } else {
                     router.replace(`/${all_results[selectedIndex].url_name}/${all_results[selectedIndex].id}`);
                 }
-                state.value.selectedIndex = -1;
-                state.value.showModal = false;
-                state.value.searchTerm = '';
+                state.selectedIndex = -1;
+                state.showModal = false;
+                state.searchTerm = '';
             }
             break;
         default:
     }
-    state.value.selectedIndex = selectedIndex;
+    state.selectedIndex = selectedIndex;
 };
 
 const onClickAutocomplete = () => {
     emit('beforeOnClickAutocomplete');
-    state.value.showModal = false;
-    state.value.selectedIndex = -1;
-    state.value.searchTerm = '';
+    state.showModal = false;
+    state.selectedIndex = -1;
+    state.searchTerm = '';
 };
 if (!isServer) {
     document.addEventListener('click', handleClickOutside);

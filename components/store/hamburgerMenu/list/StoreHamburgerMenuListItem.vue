@@ -20,7 +20,7 @@
             v-if="!isParentItem && item.children"
             :items="item.children"
             :parent-item="item"
-            @on-item-click="_onItemClick"
+            @on-item-click="(link: boolean) => $emit('onItemClick', link)"
             @on-back-item-click="_onItemBackClick"
         />
     </li>
@@ -30,7 +30,7 @@
 import classNames from 'classnames';
 import type {SideMenuItem} from '~/utils/types/menu';
 
-defineProps<{
+const {isBack, isLink} = defineProps<{
     class?: string;
     item: SideMenuItem;
     text: string;
@@ -39,12 +39,18 @@ defineProps<{
     isBold?: boolean;
     isParentItem?: boolean;
 }>();
+const emit = defineEmits<{
+    onItemClick: [boolean];
+}>();
+const open = ref(false);
 
-const open = useState(() => false);
-
-const _onClick = () => {};
-const _onItemClick = () => {};
-const _onItemBackClick = () => {};
+const _onClick = () => {
+    open.value = !isBack;
+    emit('onItemClick', isLink);
+};
+const _onItemBackClick = () => {
+    open.value = false;
+};
 </script>
 
 <style></style>

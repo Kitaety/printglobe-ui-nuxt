@@ -12,12 +12,6 @@ const initState: ProfileState = {
 
 export const useProfileStore = defineStore('profile', {
     state: () => ({...initState}),
-    getters: {
-        getIsLogin: state => {
-            return state.isLogin;
-        },
-        getContactInfo: state => state.contactInfo
-    },
     actions: {
         setIsLogin(value: boolean) {
             this.isLogin = value;
@@ -30,9 +24,11 @@ export const useProfileStore = defineStore('profile', {
                 this.contactInfo = null;
                 return;
             }
+            const config = useRuntimeConfig().public;
 
             const response = await getProfileContactInfo();
             this.contactInfo = response.data.value;
+            refreshCookie(config.authCookieName);
         }
     }
 });

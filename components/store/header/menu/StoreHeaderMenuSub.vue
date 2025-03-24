@@ -1,28 +1,27 @@
 <script setup lang="ts">
 import classNames from 'classnames';
-import type StoreHeaderMenuItem from './StoreHeaderMenuItem.vue';
-type StoreHeaderMenuItemType = InstanceType<typeof StoreHeaderMenuItem>;
 
 defineProps<{
     class?: string;
     border?: boolean;
 }>();
-const firstElment = ref<StoreHeaderMenuItemType>();
-const slots = defineSlots<{
-    default(): StoreHeaderMenuItemType[];
+defineSlots<{
+    default(props: {setRef: (el: Element | ComponentPublicInstance | null) => void}): Element;
 }>();
 
-onMounted(() => {
-    if (slots.default().length) {
-        firstElment.value = slots.default()[0];
-    }
-});
+const childRef = ref();
+const setSlotRef = (el: Element | ComponentPublicInstance | null) => {
+    childRef.value = el;
+};
 
 const focus = () => {
-    if (firstElment.value) {
-        firstElment.value.focus();
-    }
+    nextTick(() => {
+        if (childRef.value && childRef.value.focus) {
+            childRef.value.focus();
+        }
+    });
 };
+
 defineExpose({
     focus
 });
@@ -30,7 +29,7 @@ defineExpose({
 
 <template>
     <ul :class="classNames('header-sub-menu', $props.class, {border})">
-        <slot />
+        <slot :set-ref="setSlotRef" />
     </ul>
 </template>
 

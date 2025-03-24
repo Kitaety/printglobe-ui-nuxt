@@ -7,8 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import {useProfileStore} from '~/stores/profile';
 const profile = useProfileStore();
+const pageStore = usePageStore();
+
+pageStore.setTitle('test title');
 </script>
 
 <style></style>

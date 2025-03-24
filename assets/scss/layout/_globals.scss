@@ -1,0 +1,91 @@
+@use '../vars' as *;
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    min-height: 100vh;
+}
+
+a,
+img {
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+a:hover {
+    @include media('large') {
+        text-decoration: underline;
+    }
+}
+
+.container {
+    // @include outer-container;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    background: inherit;
+    width: 98%;
+    max-width: 93.75rem;
+}
+
+.offleft {
+    position: absolute;
+    left: $hide-absolute-position;
+}
+
+//focus
+@include media('large') {
+    input:hover::-webkit-input-placeholder {
+        color: #000;
+    }
+    input:hover::-moz-placeholder {
+        color: #000;
+    }
+    input:hover::-ms-input-placeholder {
+        color: #000;
+    }
+}
+
+*:focus {
+    @include focus();
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #000;
+}
+input:focus::-moz-placeholder {
+    color: #000;
+}
+input:focus::-ms-input-placeholder {
+    color: #000;
+}
+select.select-ctrl {
+    border: 1px solid $color-lightish-grey;
+    display: block;
+    height: 37px;
+}
+
+input.edit-note {
+    width: 100%;
+}
+
+.Select__input {
+    &:focus,
+    &:focus-visible {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+    }
+}

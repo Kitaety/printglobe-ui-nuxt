@@ -6,7 +6,7 @@
             :text="!parentItem.master_category_id ? 'All Categories' : `Back`"
             is-back
             is-parent-item
-            @on-item-click="_onItemClick"
+            @on-item-click="$emit('onBackItemClick')"
         />
         <StoreHamburgerMenuListItem
             v-if="!!parentItem"
@@ -38,7 +38,7 @@ defineProps<{
 
 const emit = defineEmits<{
     onItemClick: [boolean];
-    onBackItemClick: [boolean];
+    onBackItemClick: [];
 }>();
 
 const shouldCategoryBeALink = (category: SideMenuItem) => {

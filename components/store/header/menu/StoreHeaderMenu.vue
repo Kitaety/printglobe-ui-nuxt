@@ -6,17 +6,20 @@
         <StoreHeaderMenuItem
             :icon="headerMenuIcons.hamburgerMenu"
             :text="sideMenuTitle"
+            @click="openHeaderMenu"
         >
             <StoreHamburgerMenu
+                ref="hamburger-menu"
                 :is-partner="wlStore.isPartner"
                 :title="sideMenuTitle"
             />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
+            v-slot="{forwardRef}"
             dropdown
             :text="wlStore.isPartner ? 'Shop by Occasion' : 'Shop by Theme'"
         >
-            <StoreHeaderMenuTheme />
+            <StoreHeaderMenuTheme :ref="forwardRef" />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
             v-if="enableSwagStore"
@@ -29,12 +32,14 @@
             link="/quick-ship"
         />
         <StoreHeaderMenuItem
+            v-slot="{forwardRef}"
             text="Hot Deals"
             :link="wlStore.isPartner ? '/hot-deals' : ''"
             :dropdown="!wlStore.isPartner"
         >
             <StoreHeaderMenuSub v-if="!wlStore.isPartner">
                 <StoreHeaderMenuItem
+                    :ref="el => forwardRef(el)"
                     text="Hot Deals"
                     link="/hot-deals"
                 />
@@ -49,7 +54,7 @@
             text="Your Account"
             dropdown
         >
-            //TODO YourAccountDropdown
+            <StoreHeaderMenuYourAccount />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
             :text="`Cart${cartCount > 0 ? ` (${cartCount})` : ''}`"
@@ -58,18 +63,20 @@
             :aria-label="`Cart with ${cartCount} items`"
         />
         <StoreHeaderMenuItem
+            v-slot="{forwardRef}"
             dropdown
             text="Need Help?"
         >
             <StoreHeaderMenuSub>
                 <StoreHeaderMenuItem
+                    :ref="el => forwardRef(el)"
                     text="Contact Us"
                     link="/contact"
                 />
                 <StoreHeaderMenuItem
                     v-if="!wlStore.isPartner || wlStore.showLiveChat"
                     text="Live Chat"
-                    @on-click="e => openChat(e)"
+                    @click="e => openChat(e)"
                 />
                 <StoreHeaderMenuItem
                     v-if="!wlStore.isPartner"
@@ -105,6 +112,8 @@ defineProps({
     }
 });
 
+const hamburgerMenu = useTemplateRef('hamburger-menu');
+
 const wlStore = useWlConfigStore();
 const enableSwagStore = wlStore.isPartner && wlStore.enable_swag_store;
 const headerMenuIcons = {
@@ -114,4 +123,8 @@ const headerMenuIcons = {
 const sideMenuTitle = wlStore.isPartner ? 'Product Categories' : 'Shop by Category';
 //TODO get this from profile store
 const cartCount = 0;
+
+const openHeaderMenu = () => {
+    hamburgerMenu.value?.openMenu();
+};
 </script>

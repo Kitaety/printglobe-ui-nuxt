@@ -3,7 +3,7 @@ import {defaultWLFavicon, imageTypes, pgFavicon} from '../constants/file';
 import {cookieScriptTypes} from '../constants/cookies';
 import {defaultPageSchema, noindexPages} from '../constants/head';
 import {startsWithArray} from './string';
-import {parseBoolean} from './common';
+import {isServer, parseBoolean} from './common';
 import {CommunicationApproachEnum, type WlPartnerInfo} from '../types/partner';
 import type {PageState} from '../types/page';
 import type {MetaObject} from 'nuxt/schema';
@@ -302,15 +302,17 @@ const getSecondOrderScriptsTemplate = (partnerData: WlPartnerInfo, page: PageSta
                     js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/') + 'widget_async.js#5aa04973bbddbdb17f2fb753';
                     document.getElementsByTagName("head")[0].appendChild(js);
                 `
-            },
-            {
-                type: marketingScriptType,
-                src: '//cdn.callrail.com/companies/936938502/94b229991046c591a5f0/12/swap.js'
             }
         ],
         link: []
     };
 
+    if (!isServer) {
+        result.script?.push({
+            type: marketingScriptType,
+            src: '//cdn.callrail.com/companies/936938502/94b229991046c591a5f0/12/swap.js'
+        });
+    }
     if (!parseBoolean(config.disableGA)) {
         //Google Tag Manager (noscript)
         result.noscript?.push({

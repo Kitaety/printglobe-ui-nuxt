@@ -5,8 +5,8 @@
         @click="onClickDropdownButton"
         @mouseover="openDropdown"
         @mouseleave="closeDropdown"
-        @blur="onBlur"
-        @focus="onFocus"
+        @focusin="onFocusIn"
+        @focusout="onFocusOut"
     >
         <a
             ref="linkElement"
@@ -21,8 +21,7 @@
             />
             <span>{{ text }}</span>
         </a>
-        <slot />
-        <!-- {{ _renderChildren() }} -->
+        <slot :forward-ref="setForwardRef" />
     </li>
     <li
         v-else
@@ -33,7 +32,7 @@
             :aria-label="ariaLabel || undefined"
             class="header-menu-item transition-initial"
             :href="link || defaultLink"
-            @click="onClick"
+            @click="e => $emit('click', e)"
         >
             <div
                 v-if="icon"
@@ -41,7 +40,7 @@
             />
             <span>{{ text }}</span>
         </a>
-        <slot />
+        <slot :forward-ref="setForwardRef" />
     </li>
 </template>
 
@@ -55,24 +54,56 @@ const props = defineProps<{
     icon?: string;
     link?: string;
     text?: string;
-    isOpen?: boolean;
     noFocus?: boolean;
 }>();
-defineEmits<{
-    onClick: [e: Event];
+const emit = defineEmits<{
+    click: [e: Event];
 }>();
+
+const linkElement = useTemplateRef<HTMLLinkElement>('linkElement');
+const isOpen = ref(false);
+
+const openDropdown = () => (isOpen.value = true);
+const closeDropdown = () => (isOpen.value = false);
+
+const forwardRefComponent = ref();
+const setForwardRef = (el: Element | ComponentPublicInstance | null) => {
+    forwardRefComponent.value = el;
+};
+
+const focusChild = () => {
+    if (forwardRefComponent.value && forwardRefComponent.value.focus) {
+        forwardRefComponent.value.focus();
+    }
+};
+
+const focus = () => {
+    nextTick(() => {
+        if (linkElement.value?.focus) {
+            linkElement.value?.focus();
+        }
+    });
+};
+
 const defaultLink = !props.noFocus ? '#' : '';
 
-const onClickDropdownButton = () => {};
-const openDropdown = () => {};
-const closeDropdown = () => {};
-const onBlur = () => {};
-const onFocus = () => {};
+const onClickDropdownButton = (e: Event) => {
+    emit('click', e);
 
-const _renderChildren = () => {};
+    isOpen.value = !isOpen.value;
+    focusChild();
+};
 
-const onClick = () => {};
-const focus = () => {};
+const onFocusOut = (e: FocusEvent) => {
+    if (e.currentTarget === e.target || !(e.currentTarget as Node).contains(e.relatedTarget as Node)) {
+        closeDropdown();
+    }
+};
+const onFocusIn = (e: FocusEvent) => {
+    if (e.target === linkElement.value && isOpen.value) {
+        closeDropdown();
+    }
+};
 
 defineExpose({
     focus

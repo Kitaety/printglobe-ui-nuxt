@@ -1,5 +1,5 @@
 <template>
-    <li :class="classNames('autocomplete-result-row', {'autocomplete-result-row-selected': selected})">
+    <li :class="classNames('autocomplete-result-row', {selected})">
         <NuxtLink
             class="autocomplete-result"
             :to="link"

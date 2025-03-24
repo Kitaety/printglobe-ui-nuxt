@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts" setup>
+import {pgTitle} from '~/utils/constants/common';
 import {getHeadObjecs} from '~/utils/helpers/head';
 
 const wlConfigStore = useWlConfigStore();
@@ -18,7 +19,7 @@ useHead({
     meta: metaObject.meta,
     script: metaObject.script,
     link: metaObject.link,
-    title: metaObject.title,
+    title: metaObject.title || pgTitle,
     noscript: metaObject.noscript
 });
 </script>

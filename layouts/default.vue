@@ -8,12 +8,13 @@ const profileStore = useProfileStore();
 const menuStore = useMenuStore();
 
 const config = useRuntimeConfig().public;
-const showMobileSearchBar = useState(() => false);
+const showMobileSearchBar = ref(false);
 
-const authCookie = useCookie(config.authCookieName);
-profileStore.setIsLogin(!!authCookie.value);
-
-await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo(), menuStore.loadMegaMenu(), menuStore.loadThemeMenu()]);
+callOnce(async () => {
+    const authCookie = useCookie(config.authCookieName);
+    profileStore.setIsLogin(!!authCookie.value);
+    await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo(), menuStore.loadMegaMenu(), menuStore.loadThemeMenu()]);
+});
 </script>
 
 <template>
@@ -43,5 +44,5 @@ await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerI
 </template>
 
 <style lang="scss">
-@use '@/assets/scss/main.scss';
+@use '@/assets/scss/layout/main.scss';
 </style>
