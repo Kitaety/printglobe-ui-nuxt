@@ -1,5 +1,5 @@
 import {getDocs} from '~/utils/services/documents';
-import type {PageDocuments, PageState} from '../utils/types/page';
+import {AccountPageTabEnum, type PageDocuments, type PageState} from '../utils/types/page';
 
 const initState: PageState = {
     shopByCategory: {
@@ -22,7 +22,11 @@ const initState: PageState = {
     host: '',
     skipScripts: false,
     removeChat: false,
-    schema: null
+    schema: null,
+    onLoginRoute: '/',
+    accountPage: {
+        tabNumber: AccountPageTabEnum.profile
+    }
 };
 
 export const usePageStore = defineStore('page', {
@@ -35,6 +39,14 @@ export const usePageStore = defineStore('page', {
     actions: {
         setTitle(title: string) {
             this.title = title;
+        },
+        setOnLoginRouter(router: string | null | undefined) {
+            this.onLoginRoute = router || '/';
+        },
+        setAccountPageTab(tabNumber: number | null | undefined) {
+            if (tabNumber) {
+                this.accountPage.tabNumber = tabNumber;
+            }
         },
         async loadDocsAction() {
             const response = await getDocs();

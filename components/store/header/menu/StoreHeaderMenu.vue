@@ -51,10 +51,11 @@
         </StoreHeaderMenuItem>
         <StoreHeaderMenuDivider />
         <StoreHeaderMenuItem
+            v-slot="{forwardRef}"
             text="Your Account"
             dropdown
         >
-            <StoreHeaderMenuYourAccount />
+            <StoreHeaderMenuYourAccount :ref="el => forwardRef(el)" />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
             :text="`Cart${cartCount > 0 ? ` (${cartCount})` : ''}`"

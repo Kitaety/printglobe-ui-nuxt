@@ -1,4 +1,5 @@
-import {getContactInfoRoute, loginRoute} from '../constants/apiRoutes';
+import {getContactInfoRoute, loginRoute, logoutRoute} from '../constants/apiRoutes';
+import type {ProfileContactInfo} from '../types/profile';
 
 export const login = (data: {email: string; password: string}) =>
     useFetch(loginRoute, {
@@ -7,3 +8,8 @@ export const login = (data: {email: string; password: string}) =>
     });
 
 export const getProfileContactInfo = () => useFetch<ProfileContactInfo>(getContactInfoRoute);
+
+export const logOut = () =>
+    useFetch(logoutRoute, {
+        method: 'post'
+    });
