@@ -1,4 +1,3 @@
-import {filter} from 'lodash';
 import {getPriceWithDiscount} from '../helpers/prdouct';
 import type {ProductOption, Product} from '../types/product';
 import {minQuantityPerBox} from '../constants/sampleProduct';
@@ -31,7 +30,7 @@ export const getCustomPMSFee = (imprint_colors: ImprintColor[], product: Product
 };
 
 export const getSetupFee = (product: Product, option: ProductOption | undefined, addons: Addon[] = []) => {
-    const addonSetupFee = filter(addons, addon => !!addon.setup_fee && addon.optional === true)
+    const addonSetupFee = useFilter(addons, addon => !!addon.setup_fee && addon.optional === true)
         .map(addon => Number(addon.setup_fee))
         .values()
         .reduce((total, current) => total + current, 0);
@@ -52,7 +51,7 @@ export const getHazmatFee = (product: Product, quantity: number) => {
 export const calculateAddonPrice = (addon: CartItemAddon, quantities: number[], quantity: number) => {
     let upcharges = 0;
     if (addon.addon_type === 'complex') {
-        const productOptionsUpcharges = filter(addon.palettes, p => !!p.option || !!p.palette_option_id)
+        const productOptionsUpcharges = useFilter(addon.palettes, p => !!p.option || !!p.palette_option_id)
             .map(p => {
                 if (p.option) {
                     return p.option;
@@ -110,7 +109,7 @@ export const calculateSubtotal = (
 
     let imprintColorTotal = 0;
     if (!isEmpty(imprint_colors)) {
-        const imprintColorUpcharges = filter(imprint_colors, color => !!color.id)
+        const imprintColorUpcharges = useFilter(imprint_colors, color => !!color.id)
             .map(color => color.upcharge)
             .values();
         imprintColorTotal = imprintColorUpcharges.reduce((total, current) => total + Number(current), 0);
