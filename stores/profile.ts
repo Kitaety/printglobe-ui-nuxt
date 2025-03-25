@@ -1,6 +1,7 @@
-import {getProfileContactInfo, logOut} from '~/utils/services/profileService';
-import type {ProfileContactInfo, ProfileState} from '~/utils/types/profile';
+import {getAccountCart, getProfileContactInfo, logOut} from '~/utils/services/profileService';
+import type {CartItem, ProfileContactInfo, ProfileState} from '~/utils/types/profile';
 import type {FetchError} from 'ofetch';
+import {calculateSubtotal, calculateTotal} from '~/utils/lib/calculate';
 
 const initState: ProfileState = {
     isLogin: false,
@@ -8,7 +9,8 @@ const initState: ProfileState = {
     addresses: [],
     isAdminLogin: false,
     modifyCartItem: null,
-    recentItems: []
+    recentItems: [],
+    cart: []
 };
 
 export const useProfileStore = defineStore('profile', {
@@ -30,6 +32,40 @@ export const useProfileStore = defineStore('profile', {
             const response = await getProfileContactInfo();
             this.contactInfo = response.data.value;
             refreshCookie(config.authCookieName);
+        },
+        async getCart() {
+            try {
+                if (!this.isLogin) {
+                    this.setCart([]);
+                    return;
+                }
+                const {data, error} = await getAccountCart();
+                if (error.value) {
+                    throw error.value;
+                }
+
+                this.setCart(data.value || []);
+            } catch (err: unknown) {
+                logError(err as Error | FetchError, 'Get cart failed');
+            }
+        },
+        setCart(cartItems: CartItem[]) {
+            this.cart = cartItems.map(cartItem => {
+                const {quantity, product, addons, imprint_colors, surface_color, is_sample_product} = cartItem;
+                const option = product.options.find(o => o.id === cartItem.product_option_id);
+                const isAbleToCheckout = Boolean(option);
+
+                return {
+                    ...cartItem,
+                    isAbleToCheckout,
+                    subtotal: isAbleToCheckout
+                        ? calculateSubtotal(quantity, option, product, addons, imprint_colors, surface_color, is_sample_product, product.discount)
+                        : 0,
+                    total: isAbleToCheckout
+                        ? calculateTotal(quantity, option, product, addons, imprint_colors, surface_color, is_sample_product, product.discount)
+                        : 0
+                };
+            });
         },
         async logOut() {
             try {

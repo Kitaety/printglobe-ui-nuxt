@@ -105,7 +105,6 @@
 <script lang="ts" setup>
 import {openChat} from '~/utils/helpers/common';
 
-//TODO implements all function for menus
 defineProps({
     fixedToTop: {
         default: false,
@@ -116,14 +115,14 @@ defineProps({
 const hamburgerMenu = useTemplateRef('hamburger-menu');
 
 const wlStore = useWlConfigStore();
+const profileStore = useProfileStore();
 const enableSwagStore = wlStore.isPartner && wlStore.enable_swag_store;
 const headerMenuIcons = {
     hamburgerMenu: 'icon-hamburger',
     cart: 'icon-cart'
 };
 const sideMenuTitle = wlStore.isPartner ? 'Product Categories' : 'Shop by Category';
-//TODO get this from profile store
-const cartCount = 0;
+const cartCount = profileStore.cart.length;
 
 const openHeaderMenu = () => {
     hamburgerMenu.value?.openMenu();

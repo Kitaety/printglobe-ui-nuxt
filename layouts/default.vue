@@ -13,7 +13,13 @@ const showMobileSearchBar = ref(false);
 callOnce(async () => {
     const authCookie = useCookie(config.authCookieName);
     profileStore.setIsLogin(!!authCookie.value);
-    await Promise.all([profileStore.loadContactInfo(), wlConfigStore.loadtWlPartnerInfo(), menuStore.loadMegaMenu(), menuStore.loadThemeMenu()]);
+    await Promise.all([
+        profileStore.getCart(),
+        profileStore.loadContactInfo(),
+        wlConfigStore.loadtWlPartnerInfo(),
+        menuStore.loadMegaMenu(),
+        menuStore.loadThemeMenu()
+    ]);
 });
 </script>
 
