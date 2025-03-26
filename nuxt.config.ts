@@ -8,7 +8,11 @@ export default defineNuxtConfig({
             enabled: true
         }
     },
-    modules: ['@pinia/nuxt', 'nuxt-lodash', '@nuxt/eslint', '@nuxt/image', '@nuxtjs/google-fonts', 'nuxt-svgo'],
+    delayHydration: {
+        debug: process.env.NODE_ENV === 'development',
+        mode: 'init'
+    },
+    modules: ['@pinia/nuxt', 'nuxt-lodash', '@nuxt/eslint', '@nuxt/image', '@nuxtjs/google-fonts', 'nuxt-svgo', 'nuxt-delay-hydration'],
     vite: {
         server: {
             allowedHosts: ['printglobe.local', '.printglobe.local', 'printglobe.com', '.printglobe.com', 'swagsolutions.com', '.swagsolutions.com']

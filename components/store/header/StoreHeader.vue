@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {LazyNuxtImg} from '#components';
 import classNames from 'classnames';
 import {usePageStore} from '~/stores/page';
 import {defaultBusinessName, defaultLogo, defaultPhone, printglobeUrl} from '~/utils/constants/common';
@@ -45,7 +44,7 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
                             to="/"
                             class="header-logo"
                         >
-                            <LazyNuxtImg
+                            <NuxtImg
                                 width="179px"
                                 height="160px"
                                 :src="logo"

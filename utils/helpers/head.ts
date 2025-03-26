@@ -84,7 +84,7 @@ const getMetaTemplate = (partnerData: WlPartnerInfo, pageState: PageState) => {
         ]
     };
 
-    if (isPartner) {
+    if (!isPartner) {
         result.meta?.push({name: 'description', content: useEscape(description)});
         result.link?.push({
             rel: stylesheetType,

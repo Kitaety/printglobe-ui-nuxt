@@ -8,7 +8,7 @@
             :text="sideMenuTitle"
             @click="openHeaderMenu"
         >
-            <StoreHamburgerMenu
+            <LazyStoreHamburgerMenu
                 ref="hamburger-menu"
                 :is-partner="wlStore.isPartner"
                 :title="sideMenuTitle"
@@ -19,7 +19,7 @@
             dropdown
             :text="wlStore.isPartner ? 'Shop by Occasion' : 'Shop by Theme'"
         >
-            <StoreHeaderMenuTheme :ref="forwardRef" />
+            <LazyStoreHeaderMenuTheme :ref="forwardRef" />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
             v-if="enableSwagStore"
@@ -37,7 +37,7 @@
             :link="wlStore.isPartner ? '/hot-deals' : ''"
             :dropdown="!wlStore.isPartner"
         >
-            <StoreHeaderMenuSub v-if="!wlStore.isPartner">
+            <LazyStoreHeaderMenuSub v-if="!wlStore.isPartner">
                 <StoreHeaderMenuItem
                     :ref="el => forwardRef(el)"
                     text="Hot Deals"
@@ -47,7 +47,7 @@
                     text="Coupons"
                     link="/coupons"
                 />
-            </StoreHeaderMenuSub>
+            </LazyStoreHeaderMenuSub>
         </StoreHeaderMenuItem>
         <StoreHeaderMenuDivider />
         <StoreHeaderMenuItem
@@ -55,7 +55,7 @@
             text="Your Account"
             dropdown
         >
-            <StoreHeaderMenuYourAccount :ref="el => forwardRef(el)" />
+            <LazyStoreHeaderMenuYourAccount :ref="el => forwardRef(el)" />
         </StoreHeaderMenuItem>
         <StoreHeaderMenuItem
             :text="`Cart${cartCount > 0 ? ` (${cartCount})` : ''}`"
@@ -68,7 +68,7 @@
             dropdown
             text="Need Help?"
         >
-            <StoreHeaderMenuSub>
+            <LazyStoreHeaderMenuSub>
                 <StoreHeaderMenuItem
                     :ref="el => forwardRef(el)"
                     text="Contact Us"
@@ -97,7 +97,7 @@
                     text="Frequently Asked Questions"
                     link="/faq"
                 />
-            </StoreHeaderMenuSub>
+            </LazyStoreHeaderMenuSub>
         </StoreHeaderMenuItem>
     </StoreHeaderMenuContainer>
 </template>

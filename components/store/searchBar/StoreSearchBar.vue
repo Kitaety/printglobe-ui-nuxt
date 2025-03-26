@@ -38,7 +38,8 @@
                 type="submit"
                 class="header-search-button icon"
             >
-                <LazySvgoSearchIcon
+                <NuxtImg
+                    src="/images/icons/search-icon.svg"
                     aria-label="search"
                     class="search-button-img"
                 />
