@@ -52,8 +52,8 @@
             .header-button {
                 height: 20px;
                 width: 20px;
-                mask: url('@/assets/icons/close.svg') no-repeat;
-                -webkit-mask: url('@/assets/icons/close.svg') no-repeat;
+                mask: url('~/public/images/icons/close-icon.svg') no-repeat;
+                -webkit-mask: url('~/public/images/icons/close-icon.svg') no-repeat;
                 mask-size: cover;
                 mask-position: center;
                 mask-size: cover;
@@ -115,15 +115,15 @@
                     }
 
                     .item-back-arrow {
-                        mask: url('@/assets/icons/left-arrow-icon.svg') no-repeat;
-                        -webkit-mask: url('@/assets/icons/left-arrow-icon.svg') no-repeat;
+                        mask: url('~/public/images/icons/left-arrow-icon.svg') no-repeat;
+                        -webkit-mask: url('~/public/images/icons/left-arrow-icon.svg') no-repeat;
                         margin: auto 0px;
                         margin-right: 20px;
                     }
 
                     .item-next-arrow {
-                        mask: url('@/assets/icons/right-arrow-icon.svg') no-repeat;
-                        -webkit-mask: url('@/assets/icons/right-arrow-icon.svg') no-repeat;
+                        mask: url('~/public/images/icons/right-arrow-icon.svg') no-repeat;
+                        -webkit-mask: url('~/public/images/icons/right-arrow-icon.svg') no-repeat;
                         margin: auto 0px;
                     }
 

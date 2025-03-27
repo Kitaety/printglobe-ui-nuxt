@@ -58,11 +58,11 @@
                     background-color: var(--theme-color-2, $color-text-black);
 
                     &.icon-hamburger {
-                        @include mask-image('@/assets/icons/mobile-hamburger.svg');
+                        @include mask-image('~/public/images/icons/hamburger-icon.svg');
                     }
 
                     &.icon-cart {
-                        @include mask-image('@/assets/icons/cart.svg');
+                        @include mask-image('~/public/images/icons/cart-icon.svg');
                     }
                 }
             }

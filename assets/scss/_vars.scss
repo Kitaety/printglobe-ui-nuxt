@@ -136,8 +136,8 @@ $sizes: (
 @mixin close-mask($color) {
     &:after {
         content: '';
-        mask-image: url('../../public/images/close.svg');
-        -webkit-mask-image: url('../../public/images/close.svg');
+        mask-image: url('~/public/images/icons/close-icon.svg');
+        -webkit-mask-image: url('~/public/images/icons/close-icon.svg');
         mask-position: center;
         -webkit-mask-position: center;
         mask-size: cover;
@@ -156,8 +156,8 @@ $sizes: (
 @mixin checkmark-mask($color) {
     &:after {
         content: '';
-        mask-image: url('../../public/images/checkmark-white.svg');
-        -webkit-mask-image: url('../../public/images/checkmark-white.svg');
+        mask-image: url('~/public/images/icons/checkmark-white-icon.svg');
+        -webkit-mask-image: url('~/public/images/icons/checkmark-white-icon.svg');
         mask-position: center;
         -webkit-mask-position: center;
         mask-size: cover;
@@ -176,8 +176,8 @@ $sizes: (
 @mixin expand-arrow-mask($color) {
     &:after {
         content: '';
-        mask-image: url('../../public/images/downarrow-white.svg');
-        -webkit-mask-image: url('../../public/images/downarrow-white.svg');
+        mask-image: url('~/public/images/icons/arrow-down-white-icon.svg');
+        -webkit-mask-image: url('~/public/images/icons/arrow-down-white-icon.svg');
         mask-position: center;
         -webkit-mask-position: center;
         mask-size: contain;
@@ -202,8 +202,8 @@ $sizes: (
 }
 
 @mixin check-mark-icon() {
-    mask-image: url('../../public/images/check-mark.svg');
-    -webkit-mask-image: url('../../public/images/check-mark.svg');
+    mask-image: url('~/public/images/icons/check-mark-icon.svg');
+    -webkit-mask-image: url('~/public/images/icons/check-mark-icon.svg');
     mask-position: center;
     -webkit-mask-position: center;
     mask-size: contain;
@@ -240,18 +240,18 @@ $sizes: (
 }
 
 @mixin star-on() {
-    @include mask-image('../../public/images/star_on.svg');
+    @include mask-image('~/public/images/icons/star-on-icon.svg');
     background-color: $color-button-background;
     background-image: none;
 }
 
 @mixin star-on-half() {
-    @include mask-image('../../public/images/star_on_half.svg');
+    @include mask-image('~/public/images/icons/star-on-half-icon.svg');
     background-image: none;
 }
 
 @mixin star-off() {
-    @include mask-image('../../public/images/star_off.svg');
+    @include mask-image('~/public/images/icons/star-off-icon.svg');
     background-color: $color-button-background;
     background-image: none;
 }
