@@ -536,6 +536,8 @@
 
 .mobile-header-tray-sub-section {
     padding-top: 5px;
+    display: none;
+    transition: all 1s ease-out;
 
     &:first-child {
         padding-top: 0;
@@ -543,6 +545,10 @@
 
     &:last-child {
         padding-bottom: 10px;
+    }
+
+    &.open {
+        display: block;
     }
 }
 

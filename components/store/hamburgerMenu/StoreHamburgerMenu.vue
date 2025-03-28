@@ -18,7 +18,7 @@
                     </a>
                 </div>
                 <StoreHamburgerMenuList
-                    :items="masterCategories"
+                    :items="menuStore.megaMenu.masterCats"
                     @on-item-click="_onItemClick"
                 />
             </div>
@@ -36,7 +36,7 @@ defineProps<{
 }>();
 
 const megaMenuWrapper = useTemplateRef<HTMLDivElement>('mega-menu-wrapper');
-const masterCategories = useMenuStore().getMegaMenu.masterCats;
+const menuStore = useMenuStore();
 
 const isOpen = ref(false);
 

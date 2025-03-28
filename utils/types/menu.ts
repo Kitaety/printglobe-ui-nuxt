@@ -1,6 +1,7 @@
 export type MenuState = {
     megaMenu: MegaMenu;
     themeMenu: ThemeMenu;
+    mobileMenu: MobileMenu;
 };
 export type MegaMenu = {
     master_categories_with_cats: MegaMenuMasterCategory[];
@@ -65,4 +66,14 @@ export type ThemeMenuItemAttribute = {
     feature_id: number;
     feature_name: string;
     display_order: number;
+};
+
+export type MobileMenu = {
+    business: MobileMenuItem[];
+    promotional: MobileMenuItem[];
+};
+
+export type MobileMenuItem = {
+    url: string;
+    name: string;
 };

@@ -82,6 +82,6 @@ const phoneExt = isPartner ? wlConfigStore.phone_ext : '';
             </div>
         </div>
         <StoreHeaderMenu />
-        //TODO MobileHeader
+        <StoreHeaderMobile />
     </header>
 </template>

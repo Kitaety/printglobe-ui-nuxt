@@ -18,7 +18,8 @@ callOnce(async () => {
         profileStore.loadContactInfo(),
         wlConfigStore.loadtWlPartnerInfo(),
         menuStore.loadMegaMenu(),
-        menuStore.loadThemeMenu()
+        menuStore.loadThemeMenu(),
+        menuStore.loadMobileMenu()
     ]);
 });
 </script>
@@ -50,5 +51,5 @@ callOnce(async () => {
 </template>
 
 <style lang="scss">
-@use '@/assets/scss/layout/main.scss';
+@use '~/assets/scss/layout/main.scss';
 </style>

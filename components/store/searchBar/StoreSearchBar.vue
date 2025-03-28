@@ -64,10 +64,9 @@ import {makeSearch, searchAutocomplete} from '~/utils/services/search';
 import type {SearchBarAutoComplete} from '~/utils/types/searchBar';
 import type {FetchError} from 'ofetch';
 
-const props = defineProps({
+defineProps({
     showText: Boolean,
-    hideAutocomplete: Boolean,
-    keepTerm: Boolean
+    hideAutocomplete: Boolean
 });
 const emit = defineEmits<{
     setMobileSearchBar: [value: boolean];
@@ -132,7 +131,6 @@ const search = async () => {
 
         state.showModal = false;
         state.selectedIndex = -1;
-        state.searchTerm = props.keepTerm ? state.searchTerm : '';
     } catch (err) {
         logError(err as Error | FetchError, 'Search failed');
         searchStore.clearSearch();

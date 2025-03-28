@@ -48,6 +48,14 @@ export const usePageStore = defineStore('page', {
                 this.accountPage.tabNumber = tabNumber;
             }
         },
+        closeAllModals() {
+            this.$patch({
+                shopByCategory: {
+                    ...this.shopByCategory,
+                    isOpen: false
+                }
+            });
+        },
         async loadDocsAction() {
             const response = await getDocs();
             const data = response.data.value as {docs: PageDocuments} | null;

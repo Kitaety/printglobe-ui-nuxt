@@ -87,6 +87,7 @@ export const saveThemeMenuAdmin = `${apiAdminBaseRoute}/thememenu/set`;
 export const getMegaMenu = `${apiBaseRoute}/megamenu/get`;
 export const getMegaMenuAdmin = `${apiAdminBaseRoute}/megamenu/get`;
 export const saveMegaMenuAdmin = `${apiAdminBaseRoute}/megamenu/set`;
+export const getMasterCategoriesBySuperRoute = `${apiBaseRoute}/mastersBySuper`;
 
 //Reorders
 export const getReordersRoute = `${apiAdminBaseRoute}/reorders`;
